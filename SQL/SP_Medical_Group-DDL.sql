@@ -10,7 +10,7 @@ CREATE TABLE Endereco(
 	numero INT,
 	cidade VARCHAR(100),
 	estado VARCHAR(100),
-	cep INT
+	cep VARCHAR(50)
 );
 GO
 
@@ -18,7 +18,7 @@ CREATE TABLE Clinica(
 	idClinica INT PRIMARY KEY IDENTITY,
 	idEndereco INT FOREIGN KEY REFERENCES Endereco(idEndereco),
 	nomeFantasia VARCHAR(200),
-	cnpj INT,
+	cnpj VARCHAR(50),
 	razaoSocial VARCHAR(200)
 );
 GO
