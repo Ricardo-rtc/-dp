@@ -1,7 +1,7 @@
-CREATE DATABASE SPMEDICAL;
+CREATE DATABASE SPMEDICAL_R;
 GO
 
-USE SPMEDICAL;
+USE SPMEDICAL_R;
 GO
 
 CREATE TABLE Endereco(	
@@ -50,7 +50,7 @@ CREATE TABLE Medico(
 	idEspecialidade INT FOREIGN KEY REFERENCES Especialidade(idEspecialidade),
 	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario),
 	nomeMed VARCHAR(200),
-	crm INT
+	crm VARCHAR(200)
 );
 GO
 
@@ -59,10 +59,10 @@ CREATE TABLE Paciente(
 	idEndereco INT FOREIGN KEY REFERENCES Endereco(idEndereco), 
 	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario),
 	nomePaciente VARCHAR(200),
-	rg INT,
-	cpf INT, 
-	dataNasc DATE,
-	telefone INT
+	rg VARCHAR(200),
+	cpf VARCHAR(200), 
+	dataNasc DATETIME,
+	telefone VARCHAR(200)
 );
 GO
 
@@ -78,6 +78,5 @@ CREATE TABLE Consulta(
 	idSituacao INT FOREIGN KEY REFERENCES Situacao(idSituacao),
 	idPaciente INT FOREIGN KEY REFERENCES Paciente(idPaciente),
 	dataConsulta DATETIME,
-	descricaoConsulta VARCHAR(500)
 );
 GO
