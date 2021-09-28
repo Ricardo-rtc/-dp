@@ -77,6 +77,8 @@ CREATE TABLE Consulta(
 	idMedico INT FOREIGN KEY REFERENCES Medico(idMedico),
 	idSituacao INT FOREIGN KEY REFERENCES Situacao(idSituacao),
 	idPaciente INT FOREIGN KEY REFERENCES Paciente(idPaciente),
+	descricao VARCHAR(200),
 	dataConsulta DATETIME,
 );
 GO
+

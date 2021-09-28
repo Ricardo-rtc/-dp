@@ -18,19 +18,22 @@ namespace SP_Medical.webApi.Contexts
         {
         }
 
-        public virtual DbSet<Aluguei> Alugueis { get; set; }
-        public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Empresa> Empresas { get; set; }
-        public virtual DbSet<Marca> Marcas { get; set; }
-        public virtual DbSet<Modelo> Modelos { get; set; }
-        public virtual DbSet<Veiculo> Veiculos { get; set; }
+        public virtual DbSet<Clinica> Clinicas { get; set; }
+        public virtual DbSet<Consultum> Consulta { get; set; }
+        public virtual DbSet<Endereco> Enderecos { get; set; }
+        public virtual DbSet<Especialidade> Especialidades { get; set; }
+        public virtual DbSet<Medico> Medicos { get; set; }
+        public virtual DbSet<Paciente> Pacientes { get; set; }
+        public virtual DbSet<Situacao> Situacaos { get; set; }
+        public virtual DbSet<TipoUsuario> TipoUsuarios { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-C8POL51\\SQLEXPRESS; initial catalog=M_Rental; user Id=sa; pwd=senai@132;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=NOTE0113E3\\SQLEXPRESS; initial catalog=SPMEDICAL_R; user Id=sa; pwd=Senai@132;");
             }
         }
 
@@ -38,114 +41,272 @@ namespace SP_Medical.webApi.Contexts
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
 
-            modelBuilder.Entity<Aluguei>(entity =>
+            modelBuilder.Entity<Clinica>(entity =>
             {
-                entity.HasKey(e => e.IdAluguel)
-                    .HasName("PK__Alugueis__E38F97EDC7F6224B");
+                entity.HasKey(e => e.IdClinica)
+                    .HasName("PK__Clinica__C73A60558021D41E");
 
-                entity.Property(e => e.DataFim).HasColumnType("date");
+                entity.ToTable("Clinica");
 
-                entity.Property(e => e.DataInicio).HasColumnType("date");
+                entity.Property(e => e.IdClinica).HasColumnName("idClinica");
 
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.Alugueis)
-                    .HasForeignKey(d => d.IdCliente)
-                    .HasConstraintName("FK__Alugueis__IdClie__35BCFE0A");
+                entity.Property(e => e.Cnpj)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("cnpj");
 
-                entity.HasOne(d => d.IdVeiculoNavigation)
-                    .WithMany(p => p.Alugueis)
-                    .HasForeignKey(d => d.IdVeiculo)
-                    .HasConstraintName("FK__Alugueis__IdVeic__36B12243");
+                entity.Property(e => e.IdEndereco).HasColumnName("idEndereco");
+
+                entity.Property(e => e.NomeFantasia)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("nomeFantasia");
+
+                entity.Property(e => e.RazaoSocial)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("razaoSocial");
+
+                entity.HasOne(d => d.IdEnderecoNavigation)
+                    .WithMany(p => p.Clinicas)
+                    .HasForeignKey(d => d.IdEndereco)
+                    .HasConstraintName("FK__Clinica__idEnder__267ABA7A");
             });
 
-            modelBuilder.Entity<Cliente>(entity =>
+            modelBuilder.Entity<Consultum>(entity =>
             {
-                entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__Clientes__D594664299B874A6");
+                entity.HasKey(e => e.IdConsulta)
+                    .HasName("PK__Consulta__CA9C61F5F157212E");
 
-                entity.HasIndex(e => e.Cpf, "UQ__Clientes__C1F8973148B4E245")
-                    .IsUnique();
+                entity.Property(e => e.IdConsulta).HasColumnName("idConsulta");
+
+                entity.Property(e => e.DataConsulta)
+                    .HasColumnType("datetime")
+                    .HasColumnName("dataConsulta");
+
+                entity.Property(e => e.Descricao)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("descricao");
+
+                entity.Property(e => e.IdMedico).HasColumnName("idMedico");
+
+                entity.Property(e => e.IdPaciente).HasColumnName("idPaciente");
+
+                entity.Property(e => e.IdSituacao).HasColumnName("idSituacao");
+
+                entity.HasOne(d => d.IdMedicoNavigation)
+                    .WithMany(p => p.Consulta)
+                    .HasForeignKey(d => d.IdMedico)
+                    .HasConstraintName("FK__Consulta__idMedi__3A81B327");
+
+                entity.HasOne(d => d.IdPacienteNavigation)
+                    .WithMany(p => p.Consulta)
+                    .HasForeignKey(d => d.IdPaciente)
+                    .HasConstraintName("FK__Consulta__idPaci__3C69FB99");
+
+                entity.HasOne(d => d.IdSituacaoNavigation)
+                    .WithMany(p => p.Consulta)
+                    .HasForeignKey(d => d.IdSituacao)
+                    .HasConstraintName("FK__Consulta__idSitu__3B75D760");
+            });
+
+            modelBuilder.Entity<Endereco>(entity =>
+            {
+                entity.HasKey(e => e.IdEndereco)
+                    .HasName("PK__Endereco__E45B8B27D6A375F8");
+
+                entity.ToTable("Endereco");
+
+                entity.Property(e => e.IdEndereco).HasColumnName("idEndereco");
+
+                entity.Property(e => e.Cep)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("cep");
+
+                entity.Property(e => e.Cidade)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("cidade");
+
+                entity.Property(e => e.Estado)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("estado");
+
+                entity.Property(e => e.Numero).HasColumnName("numero");
+
+                entity.Property(e => e.Rua)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("rua");
+            });
+
+            modelBuilder.Entity<Especialidade>(entity =>
+            {
+                entity.HasKey(e => e.IdEspecialidade)
+                    .HasName("PK__Especial__409698056A2A2A8B");
+
+                entity.ToTable("Especialidade");
+
+                entity.Property(e => e.IdEspecialidade).HasColumnName("idEspecialidade");
+
+                entity.Property(e => e.TituloEspecialidade)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("tituloEspecialidade");
+            });
+
+            modelBuilder.Entity<Medico>(entity =>
+            {
+                entity.HasKey(e => e.IdMedico)
+                    .HasName("PK__Medico__4E03DEBA3FDF4A40");
+
+                entity.ToTable("Medico");
+
+                entity.Property(e => e.IdMedico).HasColumnName("idMedico");
+
+                entity.Property(e => e.Crm)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("crm");
+
+                entity.Property(e => e.IdClinica).HasColumnName("idClinica");
+
+                entity.Property(e => e.IdEspecialidade).HasColumnName("idEspecialidade");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.NomeMed)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("nomeMed");
+
+                entity.HasOne(d => d.IdClinicaNavigation)
+                    .WithMany(p => p.Medicos)
+                    .HasForeignKey(d => d.IdClinica)
+                    .HasConstraintName("FK__Medico__idClinic__300424B4");
+
+                entity.HasOne(d => d.IdEspecialidadeNavigation)
+                    .WithMany(p => p.Medicos)
+                    .HasForeignKey(d => d.IdEspecialidade)
+                    .HasConstraintName("FK__Medico__idEspeci__30F848ED");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Medicos)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("FK__Medico__idUsuari__31EC6D26");
+            });
+
+            modelBuilder.Entity<Paciente>(entity =>
+            {
+                entity.HasKey(e => e.IdPaciente)
+                    .HasName("PK__Paciente__F48A08F23FA5D397");
+
+                entity.ToTable("Paciente");
+
+                entity.Property(e => e.IdPaciente).HasColumnName("idPaciente");
 
                 entity.Property(e => e.Cpf)
                     .HasMaxLength(200)
                     .IsUnicode(false)
-                    .HasColumnName("CPF");
+                    .HasColumnName("cpf");
 
-                entity.Property(e => e.Nome)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                entity.Property(e => e.DataNasc)
+                    .HasColumnType("datetime")
+                    .HasColumnName("dataNasc");
 
-                entity.Property(e => e.Sobrenome)
+                entity.Property(e => e.IdEndereco).HasColumnName("idEndereco");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.NomePaciente)
                     .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("nomePaciente");
+
+                entity.Property(e => e.Rg)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("rg");
+
+                entity.Property(e => e.Telefone)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("telefone");
+
+                entity.HasOne(d => d.IdEnderecoNavigation)
+                    .WithMany(p => p.Pacientes)
+                    .HasForeignKey(d => d.IdEndereco)
+                    .HasConstraintName("FK__Paciente__idEnde__34C8D9D1");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Pacientes)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("FK__Paciente__idUsua__35BCFE0A");
             });
 
-            modelBuilder.Entity<Empresa>(entity =>
+            modelBuilder.Entity<Situacao>(entity =>
             {
-                entity.HasKey(e => e.IdEmpresa)
-                    .HasName("PK__Empresas__5EF4033E36F94F32");
+                entity.HasKey(e => e.IdSituacao)
+                    .HasName("PK__Situacao__12AFD19705BF31D8");
 
-                entity.HasIndex(e => e.NomeEmpresa, "UQ__Empresas__7D8FE3B21D764668")
-                    .IsUnique();
+                entity.ToTable("Situacao");
 
-                entity.Property(e => e.NomeEmpresa)
-                    .IsRequired()
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                entity.Property(e => e.IdSituacao).HasColumnName("idSituacao");
+
+                entity.Property(e => e.Situacao1)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("situacao");
             });
 
-            modelBuilder.Entity<Marca>(entity =>
+            modelBuilder.Entity<TipoUsuario>(entity =>
             {
-                entity.HasKey(e => e.IdMarca)
-                    .HasName("PK__Marcas__4076A887B6DEA987");
+                entity.HasKey(e => e.IdTipoUsuario)
+                    .HasName("PK__TipoUsua__03006BFF92DE749A");
 
-                entity.HasIndex(e => e.NomeMarca, "UQ__Marcas__7D8FE3B2439D1563")
-                    .IsUnique();
+                entity.ToTable("TipoUsuario");
 
-                entity.Property(e => e.NomeMarca)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
+
+                entity.Property(e => e.TituloTipoUsuario)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("tituloTipoUsuario");
             });
 
-            modelBuilder.Entity<Modelo>(entity =>
+            modelBuilder.Entity<Usuario>(entity =>
             {
-                entity.HasKey(e => e.IdModelo)
-                    .HasName("PK__Modelos__CC30D30C3FF02CA8");
+                entity.HasKey(e => e.IdUsuario)
+                    .HasName("PK__Usuario__645723A64F03D387");
 
-                entity.HasIndex(e => e.Descricao, "UQ__Modelos__008BA9EF54DFF7B5")
-                    .IsUnique();
+                entity.ToTable("Usuario");
 
-                entity.Property(e => e.Descricao)
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.Email)
                     .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("email");
 
-                entity.HasOne(d => d.IdMarcaNavigation)
-                    .WithMany(p => p.Modelos)
-                    .HasForeignKey(d => d.IdMarca)
-                    .HasConstraintName("FK__Modelos__IdMarca__2B3F6F97");
-            });
+                entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
 
-            modelBuilder.Entity<Veiculo>(entity =>
-            {
-                entity.HasKey(e => e.IdVeiculo)
-                    .HasName("PK__Veiculos__CAC4F346640ACD69");
-
-                entity.HasIndex(e => e.Placa, "UQ__Veiculos__8310F99D57AF2128")
-                    .IsUnique();
-
-                entity.Property(e => e.Placa)
+                entity.Property(e => e.NomeUsuario)
                     .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("nomeUsuario");
 
-                entity.HasOne(d => d.IdEmpresaNavigation)
-                    .WithMany(p => p.Veiculos)
-                    .HasForeignKey(d => d.IdEmpresa)
-                    .HasConstraintName("FK__Veiculos__IdEmpr__300424B4");
+                entity.Property(e => e.Senha)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("senha");
 
-                entity.HasOne(d => d.IdModeloNavigation)
-                    .WithMany(p => p.Veiculos)
-                    .HasForeignKey(d => d.IdModelo)
-                    .HasConstraintName("FK__Veiculos__IdMode__2F10007B");
+                entity.HasOne(d => d.IdTipoUsuarioNavigation)
+                    .WithMany(p => p.Usuarios)
+                    .HasForeignKey(d => d.IdTipoUsuario)
+                    .HasConstraintName("FK__Usuario__idTipoU__2D27B809");
             });
 
             OnModelCreatingPartial(modelBuilder);
