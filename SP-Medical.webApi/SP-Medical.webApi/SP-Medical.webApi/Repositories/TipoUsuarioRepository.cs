@@ -1,4 +1,6 @@
-﻿using SP_Medical.webApi.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using SP_Medical.webApi.Contexts;
+using SP_Medical.webApi.Domains;
 using SP_Medical.webApi.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,29 +11,42 @@ namespace SP_Medical.webApi.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
+        SpMedicalContext ctx = new SpMedicalContext();
         public void Atualizar(int id, TipoUsuario NovoTipoUsuario)
         {
-            throw new NotImplementedException();
+            TipoUsuario UTipoBuscado = ctx.TipoUsuarios.Find(id);
+
+            if (NovoTipoUsuario.TituloTipoUsuario != null)
+            {
+                UTipoBuscado.TituloTipoUsuario = NovoTipoUsuario.TituloTipoUsuario;
+            }
+
+            ctx.TipoUsuarios.Update(UTipoBuscado);
+            ctx.SaveChanges();
         }
 
         public void Cadastrar(TipoUsuario NovoTipoUsuario)
         {
-            throw new NotImplementedException();
+            ctx.TipoUsuarios.Add(NovoTipoUsuario);
+            ctx.SaveChanges();
         }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            TipoUsuario UTipoBuscado = ctx.TipoUsuarios.Find(id);
+            ctx.TipoUsuarios.Remove(UTipoBuscado);
+            ctx.SaveChanges();
         }
 
         public List<TipoUsuario> Listar()
         {
-            throw new NotImplementedException();
+            return ctx.TipoUsuarios.ToList();
         }
 
         public List<TipoUsuario> ListarUser()
         {
-            throw new NotImplementedException();
+            return ctx.TipoUsuarios.
+               Include(e => e.Usuarios).ToList();
         }
     }
 }
