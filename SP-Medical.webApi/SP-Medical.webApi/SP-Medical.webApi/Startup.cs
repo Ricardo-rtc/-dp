@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
@@ -43,6 +44,42 @@ namespace SP_Medical.webApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services
+            // Define a forma de autenticação
+            .AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            })
+
+            .AddJwtBearer("JwtBearer", options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                        // define que o issuer será validado
+                        ValidateIssuer = true,
+
+                        // define que o audience será validado
+                        ValidateAudience = true,
+
+                        // define que o tempo de vida será validado
+                        ValidateLifetime = true,
+
+                        // forma de criptografia e a chave de autenticação
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("spmedical-chave-autenticao")),
+
+                        // verifica o tempo de expiração do token
+                        ClockSkew = TimeSpan.FromMinutes(30),
+
+                        // define o nome da issuer, de onde está vindo
+                        ValidIssuer = "spmedical.webAPI",
+
+                        // define o nome da audience, para onde está indo
+                        ValidAudience = "spmedical.webAPI"
+                };
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +101,10 @@ namespace SP_Medical.webApi
             });
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -132,3 +132,5 @@ C:\Users\fic\Desktop\Ricardo\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webAp
 C:\Users\fic\Desktop\Ricardo\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\obj\Debug\net5.0\ref\SP-Medical.webApi.dll
 C:\Users\fic\Desktop\Ricardo\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\obj\Debug\net5.0\SP-Medical.webApi.pdb
 C:\Users\fic\Desktop\Ricardo\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\obj\Debug\net5.0\SP-Medical.webApi.genruntimeconfig.cache
+C:\Users\fic\Desktop\Ricardo\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\bin\Debug\net5.0\SP-Medical.webApi.xml
+C:\Users\fic\Desktop\Ricardo\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\obj\Debug\net5.0\SP-Medical.webApi.xml

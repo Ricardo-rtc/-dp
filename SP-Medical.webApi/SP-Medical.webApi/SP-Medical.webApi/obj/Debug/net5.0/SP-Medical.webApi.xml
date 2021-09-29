@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SP-Medical.webApi</name>
+    </assembly>
+    <members>
+        <member name="M:SP_Medical.webApi.Controllers.ClinicasController.ListarTodas">
+            <summary>
+            Lista todas as clinicas
+            </summary>
+            <returns>uma lista de clinicas</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.ClinicasController.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma clinica pelo id
+            </summary>
+            <param name="idClinica">id da clinica a ser procurada</param>
+            <returns>Uma clinica</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.ClinicasController.Cadastrar(SP_Medical.webApi.Domains.Clinica)">
+            <summary>
+            Cadastra uma nova clinica
+            </summary>
+            <param name="novaClinica">Objeto clinica com os atributos a serem cadastrados</param>
+            <returns>Status code 201 created</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.ClinicasController.Atualizar(System.Int32,SP_Medical.webApi.Domains.Clinica)">
+            <summary>
+            Atualiza uma clinica
+            </summary>
+            <param name="idClinica">Id da clinica a ser buscada</param>
+            <param name="clinicaAtualizada">Objeto com atributos a serem inseridos</param>
+            <returns>Status code 204 no content</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.ClinicasController.Deletar(System.Int32)">
+            <summary>
+            Exclui uma clinica
+            </summary>
+            <param name="idClinica">Id da clinica a ser buscada</param>
+            <returns>Status code 204 no content</returns>
+        </member>
+    </members>
+</doc>
