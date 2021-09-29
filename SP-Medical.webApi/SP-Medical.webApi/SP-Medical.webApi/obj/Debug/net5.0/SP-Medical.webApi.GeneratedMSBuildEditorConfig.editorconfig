@@ -6,5 +6,3 @@ build_property.ProjectTypeGuids =
 build_property.PublishSingleFile = 
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
-build_property.RootNamespace = SP_Medical.webApi
-build_property.ProjectDir = C:\Users\Ricardo\Desktop\SENAI\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\
