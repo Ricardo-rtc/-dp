@@ -5,5 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>SP_Medical.webApi</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Ricardo\Desktop\SENAI\SP-Medical-Group\SP-Medical.webApi\SP-Medical.webApi\SP-Medical.webApi\Properties\PublishProfiles\senai-spmedical-webapi - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

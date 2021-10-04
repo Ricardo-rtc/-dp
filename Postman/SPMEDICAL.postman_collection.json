@@ -1,280 +1,979 @@
 {
 	"info": {
-		"_postman_id": "c10eac58-0943-48b9-8741-a060ad909ccf",
+		"_postman_id": "1b2eef98-2c8e-4abe-94e2-044a91870b48",
 		"name": "SPMEDICAL",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Login Token - ADM",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"Email\" : \"saulo@hotmail.com\",\r\n    \"Senha\" : \"saulo123\"\r\n    \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login Token - Paciente id=1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\" : \"mariana@outlook.com\",\r\n    \"Senha\" : \"mariana123\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Login",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Login"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:5000/api/Login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Login"
-					]
+				{
+					"name": "Login Token - ADM id=2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\" : \"saulo@hotmail.com\",\r\n    \"Senha\" : \"saulo123\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Login",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Token - Medico id=3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\" : \"ricardo.lemos@spmedicalgroup.com.br\",\r\n    \"Senha\" : \"lemos123\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Login",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Login Token - Medico",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"Email\" : \"ricardo.lemos@spmedicalgroup.com.br\",\r\n    \"Senha\" : \"lemos123\"\r\n    \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Consulta",
+			"item": [
+				{
+					"name": "Consulta Read All TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyNzI1NjEsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.eHSsHVnEkTS9O7NMIVuN31L4gJfPfDURPK6X5_hdb6A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/Listartodos",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"Listartodos"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:5000/api/Login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Login"
-					]
+				{
+					"name": "Consulta Por Id TM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzMyNzM4MzAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.pZTOBeJK1_lMR4yBRtMCAQp9_h3oXPu-cBL-r0agoOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/1",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarMinhas TM-TP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzMyNzM4MzAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.pZTOBeJK1_lMR4yBRtMCAQp9_h3oXPu-cBL-r0agoOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/Minhas",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"Minhas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyNzI1NjEsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.eHSsHVnEkTS9O7NMIVuN31L4gJfPfDURPK6X5_hdb6A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Cadastrar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyNzI1NjEsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.eHSsHVnEkTS9O7NMIVuN31L4gJfPfDURPK6X5_hdb6A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n  \"idMedico\": 2,\r\n  \"idSituacao\": 1,\r\n  \"idPaciente\": 5,\r\n  \"dataConsulta\": \"2021-10-03T14:55:52.469Z\",\r\n  \"descricao\": \"Paciente com dores no corpo\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Consulta TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyNzYyMDksImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.M0pJCGUPTZfvlzrKnZ6tmR5xXjSq74VrWQMpPEINe_Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idMedico\": 3,\r\n  \"idSituacao\": 3,\r\n  \"idPaciente\": 6,\r\n  \"dataConsulta\": \"2021-10-03T14:55:52.469Z\",\r\n  \"descricao\": \"Paciente com dores no joelho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/9",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Descricao Consulta TM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzMyNzY5NzcsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.c3ONyaGsb_a0xafYtzoqjFys0QbVzi64snJr61d8VQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Paciente com dores nas pernas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/situacao/3",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"situacao",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar idSituacao TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzMyNzY5NzcsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.c3ONyaGsb_a0xafYtzoqjFys0QbVzi64snJr61d8VQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSituacao\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/2",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Consulta TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyNzYyMDksImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.M0pJCGUPTZfvlzrKnZ6tmR5xXjSq74VrWQMpPEINe_Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Consulta/9",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consulta",
+								"9"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Login Token - Paciente",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"Email\" : \"mariana@outlook.com\",\r\n    \"Senha\" : \"mariana123\"\r\n    \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Usuario ListarTodos TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Usuario",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuario"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:5000/api/Login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Login"
-					]
+				{
+					"name": "Usuario BuscarPorId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzMyODczNDcsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.7yHL_DnUr9DuTP8siE9qQtxoQeE1KTufgdylaDpuWyg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Usuario/15",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario Cadastrar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTipoUsuario\": 1,\r\n  \"nomeUsuario\": \"Ricardo Tamahe\",\r\n  \"email\": \"rtc@email.com\",\r\n  \"senha\": \"rtc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Usuario",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario Atualizar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idTipoUsuario\": 2,\r\n  \"nomeUsuario\": \"OOO\",\r\n  \"email\": \"23\",\r\n  \"senha\": \"nnnn\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Usuario/12",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario Delete TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Usuario/12",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"12"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Listar Tudo Token Adm",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzI5NDM0OTgsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.awnaEx_4lcOCdf_CflbO6VgVq-GvgN4e3ddSp1Z4s5E",
-							"type": "string"
+			"name": "Clinicas",
+			"item": [
+				{
+					"name": "Clinicas ListarTodos T",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Clinicas/",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Clinicas",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/Consulta/Listartodos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Consulta",
-						"Listartodos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Usuario Token Adm",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzI5NDM0OTgsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.awnaEx_4lcOCdf_CflbO6VgVq-GvgN4e3ddSp1Z4s5E",
-							"type": "string"
+				{
+					"name": "Clinicas BuscarPorId T",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhbmFAb3V0bG9vay5jb20iLCJqdGkiOiI3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMzI3NzQ0NCwiaXNzIjoic3BtZWRpY2FsLndlYkFQSSIsImF1ZCI6InNwbWVkaWNhbC53ZWJBUEkifQ.naJ9lG7FfdGWf73OZxYG-Jp6kNBw7sng_Od1Nw0_9VQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Clinicas/1",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Clinicas",
+								"1"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/Usuario",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Usuario"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Consulta - Token Medico",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbmFpQDEzMiIsImp0aSI6IjUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiI1Iiwicm9sZSI6IjEiLCJuYW1lVXNlciI6InNlbmFpQDEzMiIsImV4cCI6MTYzMjkzNjY4NSwiaXNzIjoiTWVkR3J1cC53ZWJBcGkiLCJhdWQiOiJNZWRHcnVwLndlYkFwaSJ9.mX13oHvs3MwL_QgdpisKzYRs4cN0JWaCsipEt9y-7P8",
-							"type": "string"
+				{
+					"name": "Clinicas Cadastrar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyNzYyMDksImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.M0pJCGUPTZfvlzrKnZ6tmR5xXjSq74VrWQMpPEINe_Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idEndereco\": 2,\r\n  \"nomeFantasia\": \"Teste Create\",\r\n  \"cnpj\": \"Teste Create\",\r\n  \"razaoSocial\": \"Teste Create\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Clinicas/",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Clinicas",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/Consulta",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Consulta"
-					]
+				{
+					"name": "Clinicas Atualizar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"idEndereco\": 3,\r\n    \"nomeFantasia\": \"Ricardo Clinic\",\r\n    \"cnpj\": \"1234\",\r\n    \"razaoSocial\": \"Tratar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Clinicas/2",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Clinicas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinicas Delete TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyODczMDAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.8hJDJwAYT56CTMX77K0r6cIYY9BXYfOnMBPKGo8vmRA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Clinicas/2",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Clinicas",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "Paciente",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhbmFAb3V0bG9vay5jb20iLCJqdGkiOiI3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjk0Mzk3NiwiaXNzIjoic3BtZWRpY2FsLndlYkFQSSIsImF1ZCI6InNwbWVkaWNhbC53ZWJBUEkifQ.8h-2MaExoTKCAglIgxSnkph-hkfIzai-jJAQ78MLhZc",
-							"type": "string"
+			"item": [
+				{
+					"name": "Paciente ListarTodos TM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzMyOTYzMDQsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.QlVDy4N_rBOCS9CsuazIKOZunKtqFtMfjWLrY88nnZM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Paciente",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Paciente"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/Paciente/Tudo",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Paciente",
-						"Tudo"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "MedicoConsulta - Token Medico",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbmFpQDEzMiIsImp0aSI6IjUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiI1Iiwicm9sZSI6IjEiLCJuYW1lVXNlciI6InNlbmFpQDEzMiIsImV4cCI6MTYzMjkzNzY4OSwiaXNzIjoiTWVkR3J1cC53ZWJBcGkiLCJhdWQiOiJNZWRHcnVwLndlYkFwaSJ9.7Q0CLA4VhPuG7j2L_hz_fVVtZihSR2dLbZ10r_OlWSQ",
-							"type": "string"
+				{
+					"name": "Paciente ListarTodos TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyOTYyNjUsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.BP68_Kjg4yzcRvpDd7gAknZURe7taG16NoCu9K7blyU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Paciente/tudo",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Paciente",
+								"tudo"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/Consulta/MedicoConsultas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Consulta",
-						"MedicoConsultas"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Clinicas - Token Adm",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbmFpYXBpQDEzMiIsImp0aSI6IjYiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiI2Iiwicm9sZSI6IjIiLCJuYW1lVXNlciI6InNlbmFpYXBpQDEzMiIsImV4cCI6MTYzMjk0MTkyNywiaXNzIjoiTWVkR3J1cC53ZWJBcGkiLCJhdWQiOiJNZWRHcnVwLndlYkFwaSJ9.j1HFz_5bnUcchsNSDGo1BF_lR2tHb63R3_xoTQpl2ys",
-							"type": "string"
+				{
+					"name": "Paciente Cadastrar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyOTE0NTAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.bEauRi8Garxh2G6YLk_FMt5_ahjjootVqX3p5T2JLs8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n  \"idEndereco\": 2,\r\n  \"idUsuario\": 3,\r\n  \"nomePaciente\": \"Ricardo Teste\",\r\n  \"rg\": \"2534556\",\r\n  \"cpf\": \"1281476\",\r\n  \"dataNasc\": \"2021-10-07T19:50:26.484Z\",\r\n  \"telefone\": \"859573\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Paciente/",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Paciente",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/Clinicas/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"Clinicas",
-						""
-					]
+				{
+					"name": "Paciente Atualizar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyOTE0NTAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.bEauRi8Garxh2G6YLk_FMt5_ahjjootVqX3p5T2JLs8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n  {\r\n  \"idEndereco\": 2,\r\n  \"idUsuario\": 3,\r\n  \"nomePaciente\": \"ISDASDA\",\r\n  \"rg\": \"2534556\",\r\n  \"cpf\": \"1281476\",\r\n  \"dataNasc\": \"2021-10-07T19:50:26.484Z\",\r\n  \"telefone\": \"859573\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Paciente/8",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Paciente",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente Deletar TA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhdWxvQGhvdG1haWwuY29tIiwianRpIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzMyOTE0NTAsImlzcyI6InNwbWVkaWNhbC53ZWJBUEkiLCJhdWQiOiJzcG1lZGljYWwud2ViQVBJIn0.bEauRi8Garxh2G6YLk_FMt5_ahjjootVqX3p5T2JLs8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedical-webapi.azurewebsites.net/api/Paciente/8",
+							"protocol": "http",
+							"host": [
+								"senai-spmedical-webapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Paciente",
+								"8"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

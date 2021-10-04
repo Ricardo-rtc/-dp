@@ -27,7 +27,7 @@ namespace SP_Medical.webApi.Controllers
         /// Lista todas as clinicas
         /// </summary>
         /// <returns>uma lista de clinicas</returns>
-        [Authorize(Roles = "1")]
+        [Authorize]
         [HttpGet]
         public IActionResult ListarTodas()
         {
@@ -46,7 +46,7 @@ namespace SP_Medical.webApi.Controllers
         /// </summary>
         /// <param name="idClinica">id da clinica a ser procurada</param>
         /// <returns>Uma clinica</returns>
-        [Authorize(Roles = "1")]
+        [Authorize]
         [HttpGet("{idClinica}")]
         public IActionResult BuscarPorId(int idClinica)
         {
@@ -97,7 +97,7 @@ namespace SP_Medical.webApi.Controllers
         /// <param name="idClinica">Id da clinica a ser buscada</param>
         /// <param name="clinicaAtualizada">Objeto com atributos a serem inseridos</param>
         /// <returns>Status code 204 no content</returns>
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2")]
         [HttpPut("{idClinica}")]
         public IActionResult Atualizar(int idClinica, Clinica clinicaAtualizada)
         {
@@ -119,7 +119,7 @@ namespace SP_Medical.webApi.Controllers
         /// </summary>
         /// <param name="idClinica">Id da clinica a ser buscada</param>
         /// <returns>Status code 204 no content</returns>
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2")]
         [HttpDelete("{idClinica}")]
         public IActionResult Deletar(int idClinica)
         {

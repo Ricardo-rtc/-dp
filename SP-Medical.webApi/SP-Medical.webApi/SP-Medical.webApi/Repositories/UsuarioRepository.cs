@@ -13,14 +13,18 @@ namespace SP_Medical.webApi.Repositories
         SpMedicalContext ctx = new SpMedicalContext();
         public void Atualizar(int id, Usuario NovoUsuario)
         {
-            Usuario UsuarioBuscado = ctx.Usuarios.Find(id);
+            Usuario UsuarioBuscado = BuscarPorId(id);
 
-            if (NovoUsuario.Email != null)
+            if (NovoUsuario.IdTipoUsuario > 0 && NovoUsuario.Email != null && NovoUsuario.Senha != null)
             {
+                UsuarioBuscado.IdTipoUsuario = NovoUsuario.IdTipoUsuario;
+                UsuarioBuscado.NomeUsuario = NovoUsuario.NomeUsuario;
                 UsuarioBuscado.Email = NovoUsuario.Email;
+                UsuarioBuscado.Senha = NovoUsuario.Senha;
+                ctx.Usuarios.Update(UsuarioBuscado);
+                ctx.SaveChanges();
             }
-            ctx.Usuarios.Update(UsuarioBuscado);
-            ctx.SaveChanges();
+            
         }
 
         public Usuario BuscarPorId(int id)

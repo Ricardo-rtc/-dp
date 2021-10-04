@@ -53,12 +53,14 @@ namespace SP_Medical.webApi.Controllers
 
         [Authorize(Roles = "2")]
         [HttpPost]
-        public IActionResult Cadastro(Usuario NovoUser)
+        public IActionResult Cadastro( Usuario NovoUser)
         {
             try
             {
                 Usuario.Cadastrar(NovoUser);
-                return StatusCode(201);
+
+                return Ok(Usuario.Listar().Last());
+                //return StatusCode(201); 
             }
             catch (Exception ex)
             {
@@ -73,7 +75,7 @@ namespace SP_Medical.webApi.Controllers
             try
             {
                 Usuario.Deletar(id);
-                return StatusCode(204);
+                return Ok("Usuario Deletado");
             }
             catch (Exception ex)
             {
@@ -88,7 +90,7 @@ namespace SP_Medical.webApi.Controllers
             try
             {
                 Usuario.Atualizar(id, NovoUser);
-                return StatusCode(204);
+                return Ok("Usuario Atualizado");
             }
             catch (Exception ex)
             {

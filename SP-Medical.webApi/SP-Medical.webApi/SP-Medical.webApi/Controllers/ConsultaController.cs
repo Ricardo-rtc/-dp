@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SP_Medical.webApi.Domains;
 using SP_Medical.webApi.Interfaces;
 using SP_Medical.webApi.Repositories;
+using SP_Medical.webApi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,7 +32,7 @@ namespace SP_Medical.webApi.Controllers
             try
             {
                 return Ok(Con.ListarCon());
-            }
+            }   
             catch (Exception ex)
             {
                 return BadRequest(ex);
@@ -52,15 +53,15 @@ namespace SP_Medical.webApi.Controllers
             }
         }
 
-        [Authorize(Roles = "1")]
-        [HttpGet("PacienteConsultas")]
-        public IActionResult PacienteConsulta()
+        [Authorize(Roles = "1, 3")]
+        [HttpGet("Minhas")]
+        public IActionResult ListarMinhas()
         {
             try
             {
                 int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
 
-                return Ok(Con.ConPaciente(idUsuario));
+                return Ok(Con.ListarMinhas(idUsuario));
             }
             catch (Exception ex)
             {
@@ -68,21 +69,7 @@ namespace SP_Medical.webApi.Controllers
             }
         }
 
-        [Authorize(Roles = "3")]
-        [HttpGet("MedicoConsultas")]
-        public IActionResult MedicoConsultas()
-        {
-            try
-            {
-                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-
-                return Ok(Con.ConMedico(idUsuario));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+      
 
         [Authorize(Roles = "3")]
         [HttpGet("{id}")]
@@ -144,12 +131,39 @@ namespace SP_Medical.webApi.Controllers
         }
 
         [Authorize(Roles = "3")]
+        [HttpPut("Situacao/{id}")]
+        public IActionResult AtualizarDescricao(int id, AtualizarDescricaoViewModel AtualizarDescricao)
+        {
+            try
+            {
+                Consultum ConsultaBuscada = Con.BuscarPorId(id);
+
+                if (ConsultaBuscada != null)
+                {
+
+                    Con.AtualizarDescricao(id, AtualizarDescricao.Descricao);
+
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Consulta informada não encontrada" });
+                }
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [Authorize(Roles = "3")]
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Consultum status)
         {
             try
             {
-                Con.Status(id, status.IdSituacao.ToString());
+                Con.Situacao(id, status.IdSituacao.ToString());
                 return StatusCode(204);
             }
             catch (Exception ex)

@@ -10,13 +10,14 @@ namespace SP_Medical.webApi.Interfaces
     {
         List<Consultum> ListarTodos();
         List<Consultum> ListarCon();
-        List<Consultum> ConMedico(int id);
-        List<Consultum> ConPaciente(int id);
+        List<Consultum> ListarMinhas(int id);
+    
 
         Consultum BuscarPorId(int id);
         void Cadastrar(Consultum NovaConsulta);
         void Deletar(int id);
         void Atualizar(int id, Consultum NovaConsulta);
-        void Status(int id, string status);
+        void AtualizarDescricao(int id, string DescricaoAtualizada);
+        void Situacao(int id, string status);
     }
 }

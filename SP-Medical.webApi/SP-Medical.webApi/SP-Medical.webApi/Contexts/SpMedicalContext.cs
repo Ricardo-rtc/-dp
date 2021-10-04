@@ -33,7 +33,7 @@ namespace SP_Medical.webApi.Contexts
             if (!optionsBuilder.IsConfigured)
             {
 
-                optionsBuilder.UseSqlServer("Data Source=NOTE0113E3\\SQLEXPRESS; initial catalog=SPMEDICAL_R; user Id=sa; pwd=Senai@132;");
+                optionsBuilder.UseSqlServer("Server=tcp:senai-manha.database.windows.net,1433;Initial Catalog=SPMEDICAL-R;Persist Security Info=False;User ID=senai-manha;Password=spmedical@132;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
