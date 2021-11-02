@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+/* Reset da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container */
+.container{
+    width: 1355px;
+    margin: 0 auto;
+}
+
+#ponto_blue{
+    color:#0C8AF7 ;
+}
+
+/* Conteúdo */
+main{
+    background-image: url(../img/fundo.png);
+    height: 998px;
+}
+
+.cor{
+    background-color: rgba(65, 65, 65, 0.65);
+    height: 998px;
+
+    padding-top: 100px;
+}
+
+h1{
+    color: white;
+    font-family: 'Sen', sans-serif;
+    font-size: 70px;
+
+    width: 700px;
+}
+
+.texto_sobre_nos{
+    color: white;
+    font-family: 'Sen', sans-serif;
+    font-size: 30px;
+    text-align: justify;
+
+    margin-top: 175px;
+    width: 700px;
+}
