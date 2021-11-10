@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-d
 
 import './index.css';
 
+
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import NotFound from './pages/NotFound/NotFound';

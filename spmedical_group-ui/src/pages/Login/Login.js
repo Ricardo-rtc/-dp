@@ -1,3 +1,8 @@
+import '../../assets/css/login.css'
+import '../../assets/css/header.css'
+import Header_top from '../../components/header/header'; 
+
+
 import { Component } from "react";
 import axios from 'axios';
 
@@ -10,7 +15,7 @@ export default class Login extends Component {
             erroMensagem: ''
         };
     };
-    
+
     efetuaLogin = (event) => {
         this.setState({ erroMensagem: " " })
         event.preventDefault();
@@ -38,38 +43,38 @@ export default class Login extends Component {
     render() {
         return (
             <div>
+                <Header_top>
+
+                </Header_top>
                 <main>
-                    <section>
-                        <p>Bem vindo(a)! <br /> Faça login para acessar a sua conta.</p>
-
-                        <form onSubmit={this.efetuaLogin}>
-                            <input
-                                type="text"
-                                name="email"
-                                value={this.state.email}
-                                onChange={this.atualizaStateCampo}
-                                placeholder="Email"
-                            />
-
-                            <div></div>
-                            <input
-                                type="password"
-                                name="senha"
-                                value={this.state.senha}
-                                onChange={this.atualizaStateCampo}
-                                placeholder="Senha"
-                            />
-                            <div></div>
-                            <button type="submit">Login</button>
-                            <p style={{color: 'red'}}>{this.state.erroMensagem}</p>
-
-                        </form>
-                    </section>
+                    <div className="cor">
+                        <div className="container container_consultas">
+                            <h1>Login</h1>
+                            <div class="box_login fundo">
+                                <form class="box_info" onSubmit={this.efetuaLogin}>
+                                    <input 
+                                    type="text"
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.atualizaStateCampo}
+                                    placeholder="Email"
+                                    />
+                                    <input 
+                                    type="password"
+                                    name="senha"
+                                    value={this.state.senha}
+                                    onChange={this.atualizaStateCampo}
+                                    placeholder="Senha"/>
+                                    <button type="submit">Entrar</button>
+                                </form>
+                                    <p style={{color: 'red', fontSize:'25px'}}>{this.state.erroMensagem}</p>
+                            </div>
+                        </div>
+                    </div>
                 </main>
 
 
 
             </div>
-        )
-    }
+    )}
 }
