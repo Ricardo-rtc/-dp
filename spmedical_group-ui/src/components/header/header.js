@@ -3,6 +3,7 @@ import Logo from '../../assets/img/Logo-full.png'
 import Menu from '../../assets/img/menu-hamb.png'
 
 import React,{Component} from "react";
+import { Link } from 'react-router-dom';
 
 class Header_top extends Component{
 
@@ -21,20 +22,20 @@ toggleMenu = () => {
        return (
                 <header>
                 <div className="container container_header">
-                    <a id="btnMenu" onClick={() => this.toggleMenu()} >
+                    <button id="btnMenu" onClick={() => this.toggleMenu()} >
                         <img className="menu-hamb" src={Menu} alt="Menu Hamburguer" />
-                    </a>
+                    </button>
                     <nav id="nav">
                         <ul id="menu">
-                            <a href="">Home</a>
-                            <a href="">Cadastrar</a>
-                            <a href="">Listar</a>
+                            <Link to="/">Home</Link>
+                            <Link to="/">Cadastrar</Link>
+                            <Link to="/">Listar</Link>
                         </ul>
 
                     </nav>
-                    <img className="logo" src={Logo} alt="Logo completo" />
-                    <a href="" className="login"></a>
-                    <a href="" className="login"></a>
+                            <Link to="/"><img className="logo" src={Logo} alt="Logo completo" /></Link>
+                    <span></span>
+                    <Link to="/login"  className="login">{this.props.Login}</Link>
                 </div>
             </header>               
 

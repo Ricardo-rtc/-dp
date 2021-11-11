@@ -17,19 +17,19 @@
 }
 
 /* Conteúdo */
-main{
+.main_home{
     background-image: url(../img/fundo.png);
     height: 998px;
 }
 
-.cor{
+.cor_Home{
     background-color: rgba(65, 65, 65, 0.65);
     height: 998px;
 
     padding-top: 100px;
 }
 
-h1{
+.h1_home{
     color: white;
     font-family: 'Sen', sans-serif;
     font-size: 70px;

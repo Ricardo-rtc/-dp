@@ -8,6 +8,8 @@ header{
 }
 #btnMenu{
     display: block;
+    background-color: unset;
+    border: none;
 }
 
 #menu{
@@ -17,6 +19,8 @@ header{
     position: absolute;
     top: 80px;
     left: 276px;
+
+    height: 1000px;
     width: 200px;
     height: max-content;
 }

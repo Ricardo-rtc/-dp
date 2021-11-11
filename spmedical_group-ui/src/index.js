@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 
-import './index.css';
 
 
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
+
+import Home from './pages/Home/Home.jsx';
+import Login from './pages/Login/Login.jsx';
 import NotFound from './pages/NotFound/NotFound';
 
 import reportWebVitals from './reportWebVitals';
