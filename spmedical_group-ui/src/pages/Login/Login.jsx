@@ -34,20 +34,22 @@ export default class Login extends Component {
 
                     console.log(localStorage.getItem('usuario-token'))
 
-                    // verifica se o usuário logado é do tipo administrador
                     switch (parseJwt().role) {
                         case '1':
-                            this.props.history.push('/');
+                            // verifica se o usuário logado é do tipo paciente
+                            this.props.history.push('/listarPaciente');
                             console.log('estou logado: ' + usuarioAutenticado())
-
+                            
                             break;
-                        case '2':
-                            this.props.history.push('/');
+                            case '2':
+                            // verifica se o usuário logado é do tipo administrador
+                            this.props.history.push('/listarAdm');
                             console.log('estou logado: ' + usuarioAutenticado())
-
+                            
                             break;
-                        case '3':
-                            this.props.history.push('/');
+                            case '3':
+                            // verifica se o usuário logado é do tipo médico
+                            this.props.history.push('/listarMedico');
                             console.log('estou logado: ' + usuarioAutenticado())
                             break;
                         default:
@@ -98,9 +100,6 @@ export default class Login extends Component {
                         </div>
                     </div>
                 </main>
-
-
-
             </div>
         )
     }

@@ -1,29 +1,59 @@
+import React, { useState } from 'react';
 
 import Logo from '../../assets/img/Logo-full.png'
-import Menu from '../../assets/img/menu-hamb.png'
+import MenuHamb from '../../assets/img/menu-hamb.png'
 
-import React,{Component} from "react";
+
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 import { Link } from 'react-router-dom';
 
-class Header_top extends Component{
-
- 
-
-toggleMenu = () => {
-
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('active');
-
-}
 
 
-   render(){
+function Header_top() {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-       return (
-                <header>
+    
+
+
+    
+
+        return (
+            <header>
                 <div className="container container_header">
-                    <button id="btnMenu" onClick={() => this.toggleMenu()} >
+                    <Button
+                        id="basic-button"
+                        aria-controls="basic-menu"
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                    >
                         <img className="menu-hamb" src={Menu} alt="Menu Hamburguer" />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>My account</MenuItem>
+                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </Menu>
+                    <button id="btnMenu" onClick={() => this.toggleMenu()} >
+                        <img className="menu-hamb" src={MenuHamb} alt="Menu Hamburguer" />
                     </button>
                     <nav id="nav">
                         <ul id="menu">
@@ -33,14 +63,13 @@ toggleMenu = () => {
                         </ul>
 
                     </nav>
-                            <Link to="/"><img className="logo" src={Logo} alt="Logo completo" /></Link>
+                    <Link to="/"><img className="logo" src={Logo} alt="Logo completo" /></Link>
                     <span></span>
-                    <Link to="/login"  className="login">{this.props.Login}</Link>
+                    <Link to="/login" className="login">{this.props.Login}</Link>
                 </div>
-            </header>               
+            </header>
 
-       )
-   }
+        )   
 }
 
 export default Header_top

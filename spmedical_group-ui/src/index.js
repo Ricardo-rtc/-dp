@@ -7,7 +7,10 @@ import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-d
 
 import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login.jsx';
-import NotFound from './pages/NotFound/NotFound';
+import NotFound from './pages/NotFound/NotFound.js';
+import ListarAdm from './pages/ListarAdm/ListarAdm.jsx';
+import ListarPaciente from './pages/ListarPaciente/ListarPaciente.jsx';
+import ListarMedico from './pages/ListarMedico/ListarMedico.jsx';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -17,8 +20,11 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={Home} /> {/* Home */}
-        <Route path="/login" component={Login} /> {/* Tipos Eventos */}
+        <Route path="/login" component={Login} /> {/* Login */}
         <Route path="/notFound" component={NotFound} /> {/* Not Found */}
+        <Route path="/listarAdm" component={ListarAdm} /> {/* Listar Adm */}
+        <Route path="/listarPaciente" component={ListarPaciente} /> {/* Listar Paciente */}
+        <Route path="/listarMedico" component={ListarMedico} /> {/* Listar Médico */}
         <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}
       </Switch>
     </div>
