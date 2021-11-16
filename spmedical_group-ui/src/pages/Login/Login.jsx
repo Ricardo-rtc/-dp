@@ -11,8 +11,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: 'saulo@hotmail.com',
-            senha: 'saulo123',
+            email: 'ricardo.lemos@spmedicalgroup.com.br',
+            senha: 'lemos123',
             erroMensagem: '',
             isLoading: false
         };
@@ -32,29 +32,22 @@ export default class Login extends Component {
                     localStorage.setItem('usuario-token', resposta.data.token)
                     this.setState({ isLoading: false });
 
-                    console.log(localStorage.getItem('usuario-token'))
 
                     switch (parseJwt().role) {
                         case '1':
                             // verifica se o usuário logado é do tipo paciente
-                            this.props.history.push('/listarPaciente');
-                            console.log('estou logado: ' + usuarioAutenticado())
-                            
+                            this.props.history.push('/listarPaciente');                          
                             break;
                             case '2':
                             // verifica se o usuário logado é do tipo administrador
                             this.props.history.push('/listarAdm');
-                            console.log('estou logado: ' + usuarioAutenticado())
-                            
                             break;
                             case '3':
                             // verifica se o usuário logado é do tipo médico
                             this.props.history.push('/listarMedico');
-                            console.log('estou logado: ' + usuarioAutenticado())
                             break;
                         default:
                             this.props.history.push('/');
-                            console.log('estou logado: ' + usuarioAutenticado())
                             break;
                     }
                 }

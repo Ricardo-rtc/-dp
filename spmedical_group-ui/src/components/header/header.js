@@ -1,8 +1,6 @@
 import Logo from '../../assets/img/Logo-full.png';
 import Menu from '../../assets/img/menu-hamb.png';
-import Home from '../../pages/Home/Home.jsx';
 
-import { Route, Redirect } from 'react-router-dom';
 import { parseJwt, usuarioAutenticado } from '../../services/auth.js';
 
 import React, { Component } from "react";
@@ -10,9 +8,7 @@ import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
 
-        
     toggleMenu = () => {
-
         const nav = document.getElementById('nav');
         nav.classList.toggle('active');
     }
@@ -20,29 +16,43 @@ export default class Header extends Component {
     listar = () => { 
         
         console.log("logou")
-        switch (parseJwt().role) {
-            case '1':
-                // verifica se o usuário logado é do tipo paciente
-                <Redirect to="/listarPaciente"  /> 
-                console.log('estou logado: ' + usuarioAutenticado())
-                
-                break;
-                case '2':
-                    // verifica se o usuário logado é do tipo administrador
-                    <Redirect to="/listarAdm"  />
-                console.log('estou logado: ' + usuarioAutenticado())
 
-                break;
-            case '3':
-                // verifica se o usuário logado é do tipo médico
-                <Redirect to="/listarMedico" />
-                console.log('estou logado: ' + usuarioAutenticado())
-                break;
-            default:
-                <Route exact path="/" component={Home} />
-                console.log('estou logado: ' + usuarioAutenticado())
-                break;
-        }
+
+if(parseJwt() != null){
+
+
+
+    switch (parseJwt().role) {
+        case '1':
+            // verifica se o usuário logado é do tipo paciente
+            // <Redirect to="/listarPaciente"  /> 
+            this.props.Props.history.push("/listarPaciente");
+            console.log('estou logado: ' + usuarioAutenticado())
+            
+            break;
+            case '2':
+                // verifica se o usuário logado é do tipo administrador
+                // <Redirect to="/listarAdm"  />
+                this.props.Props.history.push("/listarAdm");
+            console.log('estou logado: ' + usuarioAutenticado())
+
+            break;
+        case '3':
+            // verifica se o usuário logado é do tipo médico
+            this.props.Props.history.push("/listarMedico");
+            console.log('estou logado: ' + usuarioAutenticado())
+            break;
+        default:
+            this.props.Props.history.push("/login");
+            console.log('estou logado: ' + usuarioAutenticado())
+            break;
+    }
+
+}else{
+    alert("Usuario nao está logado.")
+}
+
+       
     }
 
     render() {
@@ -57,7 +67,7 @@ export default class Header extends Component {
                         <ul id="menu">
                             <Link to="/">Home</Link>
                             <Link to="/cadastrar">Cadastrar</Link>
-                            <button onClick={() => this.listar()}>Listar</button>
+                            <button onClick={() => this.listar()}>Listar</button>   
                             
                         </ul>
 

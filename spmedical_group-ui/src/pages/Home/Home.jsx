@@ -9,7 +9,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Header Login="Login" />
+        <Header Login="Login" Props={this.props} />
 
         <main className="main_home">
           <div className="cor_Home">
