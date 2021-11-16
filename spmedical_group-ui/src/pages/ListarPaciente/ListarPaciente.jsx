@@ -1,31 +1,31 @@
 import '../../assets/css/home.css'
 import '../../assets/css/footer.css'
 import '../../assets/css/consultas-listar.css'
-import HeaderTop from '../../components/header/header';
+import Header from '../../components/header/header';
 
-import { Component } from "react";
 import { Link } from 'react-router-dom';
 
 
-export default class Home extends Component {
+export default class ListarPaciente{
+    
 
   render() {
     return (
         <div>
-        <HeaderTop/>
+        <Header/>
         <main className="main_listar">
-        <div class="container container_consultas">
+        <div className="container container_consultas">
             <h1>Consultas</h1>
-            <div class="box_consulta">
+            <div className="box_consulta">
                 <h2>Consulta</h2>
-                <div class="box_info">
+                <div className="box_info">
                     <span>Data</span>
                     <span>Hora</span>
                     <span>Situação</span>
                     <span id="descricao">Descrição</span>
                 </div>
                 <h2>Médico</h2>
-                <div class="box_info">
+                <div className="box_info">
                     <span>Nome</span>
                     <span>CRM</span>
                     <span>Especialidade</span>
@@ -36,11 +36,11 @@ export default class Home extends Component {
     </main>
 
     <footer>
-        <div class="container container_footer">
-            <span class="span_footer">
+        <div className="container container_footer">
+            <span className="span_footer">
                 ©2020 Cia. da Consulta - Todos os direitos reservados
             </span>
-            <span class="span_footer">
+            <span className="span_footer">
                 Os médicos da Central de Consultas são especialistas ou estão em conclusão de sua pós-graduação.
             </span>
         </div>

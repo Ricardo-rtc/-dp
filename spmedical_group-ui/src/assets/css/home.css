@@ -6,6 +6,8 @@
     box-sizing: border-box;
 }
 
+
+
 /* Container */
 .container{
     width: 1355px;
@@ -45,4 +47,65 @@
 
     margin-top: 175px;
     width: 700px;
+    }
+
+
+@media(max-width: 1366px){
+    .container{
+        width: 1000px;
+    }
+}
+
+@media(max-width: 800px){
+    .container{
+        width: 500px;
+    }
+
+    .main_listar{
+        padding: 20px 0px ;
+    }
+
+    .h1_home{
+        color: white;
+        font-family: 'Sen', sans-serif;
+        font-size: 70px;
+        text-align: justify;
+    
+        width: 500px;
+    }
+
+    .texto_sobre_nos{
+        color: white;
+        font-family: 'Sen', sans-serif;
+        font-size: 30px;
+        text-align: justify;
+    
+        margin-top: 140px;
+        width: 500px;
+        }
+}
+
+@media(max-width: 400px){
+    .container{
+        width: 345px;
+    }
+
+    .h1_home{
+        width: 360px;
+        font-size: 50px;
+    }
+
+    .texto_sobre_nos{
+        font-size: 25px;
+        width: 360px;
+    }
+
+    /* .main_home{
+        height: 1500px;
+        background-repeat: no-repeat;
+    }
+
+    .cor_Home{
+        height: 1500px
+    } */
 }

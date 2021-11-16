@@ -19,3 +19,25 @@ footer{
     text-align: center;
     width: 500px;
 }
+
+@media(max-width: 600px){
+    .container_footer{
+        height: 150px;
+    }
+
+    .span_footer{
+        font-size: 15px;
+        width: 225px;
+    }
+}
+
+@media(max-width: 400px){
+    .container_footer{
+        height: 150px;
+    }
+
+    .span_footer{
+        font-size: 15px;
+        width: 225px;
+    }
+}

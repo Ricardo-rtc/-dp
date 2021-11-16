@@ -1,65 +1,64 @@
-import React, { useState } from 'react';
+import Logo from '../../assets/img/Logo-full.png';
+import Menu from '../../assets/img/menu-hamb.png';
+import Home from '../../pages/Home/Home.jsx';
 
-import Logo from '../../assets/img/Logo-full.png'
-import MenuHamb from '../../assets/img/menu-hamb.png'
+import { Route, Redirect } from 'react-router-dom';
+import { parseJwt, usuarioAutenticado } from '../../services/auth.js';
 
-
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-
+import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
+export default class Header extends Component {
 
+        
+    toggleMenu = () => {
 
-function Header_top() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+        const nav = document.getElementById('nav');
+        nav.classList.toggle('active');
+    }
 
-    
+    listar = () => { 
+        
+        console.log("logou")
+        switch (parseJwt().role) {
+            case '1':
+                // verifica se o usuário logado é do tipo paciente
+                <Redirect to="/listarPaciente"  /> 
+                console.log('estou logado: ' + usuarioAutenticado())
+                
+                break;
+                case '2':
+                    // verifica se o usuário logado é do tipo administrador
+                    <Redirect to="/listarAdm"  />
+                console.log('estou logado: ' + usuarioAutenticado())
 
+                break;
+            case '3':
+                // verifica se o usuário logado é do tipo médico
+                <Redirect to="/listarMedico" />
+                console.log('estou logado: ' + usuarioAutenticado())
+                break;
+            default:
+                <Route exact path="/" component={Home} />
+                console.log('estou logado: ' + usuarioAutenticado())
+                break;
+        }
+    }
 
-    
+    render() {
 
         return (
             <header>
                 <div className="container container_header">
-                    <Button
-                        id="basic-button"
-                        aria-controls="basic-menu"
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                    >
-                        <img className="menu-hamb" src={Menu} alt="Menu Hamburguer" />
-                    </Button>
-                    <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
-                        }}
-                    >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                        <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu>
                     <button id="btnMenu" onClick={() => this.toggleMenu()} >
-                        <img className="menu-hamb" src={MenuHamb} alt="Menu Hamburguer" />
+                        <img className="menu-hamb" src={Menu} alt="Menu Hamburguer" />
                     </button>
                     <nav id="nav">
                         <ul id="menu">
                             <Link to="/">Home</Link>
-                            <Link to="/">Cadastrar</Link>
-                            <Link to="/">Listar</Link>
+                            <Link to="/cadastrar">Cadastrar</Link>
+                            <button onClick={() => this.listar()}>Listar</button>
+                            
                         </ul>
 
                     </nav>
@@ -69,16 +68,7 @@ function Header_top() {
                 </div>
             </header>
 
-        )   
+        )
+    }
 }
-
-export default Header_top
-
-
-
-
-
-
-
-
 

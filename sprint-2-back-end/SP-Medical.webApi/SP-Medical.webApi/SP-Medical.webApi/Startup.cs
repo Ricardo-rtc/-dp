@@ -1,34 +1,32 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+
 
 namespace SP_Medical.webApi
 {
     public class Startup
     {
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                // Adiciona o serviço dos Controllers
+                // Adiciona o serviï¿½o dos Controllers
                 .AddControllers()
                 .AddNewtonsoftJson(options =>
                 {
                     // Ignora os loopings nas consultas
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    // Ignora valores nulos ao fazer junções nas consultas
+                    // Ignora valores nulos ao fazer junï¿½ï¿½es nas consultas
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
@@ -37,14 +35,14 @@ namespace SP_Medical.webApi
                 options.AddPolicy("CorPolicy",
                                 builder =>
                                 {
-                                    builder.WithOrigins("http://localhost:3000")
+                                    builder.WithOrigins("http://localhost:3000","http://192.168.1.11:3000","http://209.14.226.28:3000")
                                     .AllowAnyHeader()
                                     .AllowAnyMethod();
                                 });
             });
 
 
-            // Adiciona o serviço do Swagger
+            // Adiciona o serviï¿½o do Swagger
             // https://docs.microsoft.com/pt-br/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0&tabs=visual-studio
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -58,7 +56,7 @@ namespace SP_Medical.webApi
             });
 
             services
-            // Define a forma de autenticação
+            // Define a forma de autenticaï¿½ï¿½o
             .AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";
@@ -69,25 +67,25 @@ namespace SP_Medical.webApi
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                        // define que o issuer será validado
+                        // define que o issuer serï¿½ validado
                         ValidateIssuer = true,
 
-                        // define que o audience será validado
+                        // define que o audience serï¿½ validado
                         ValidateAudience = true,
 
-                        // define que o tempo de vida será validado
+                        // define que o tempo de vida serï¿½ validado
                         ValidateLifetime = true,
 
-                        // forma de criptografia e a chave de autenticação
+                        // forma de criptografia e a chave de autenticaï¿½ï¿½o
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("spmedical-chave-autenticao")),
 
-                        // verifica o tempo de expiração do token
+                        // verifica o tempo de expiraï¿½ï¿½o do token
                         ClockSkew = TimeSpan.FromMinutes(30),
 
-                        // define o nome da issuer, de onde está vindo
+                        // define o nome da issuer, de onde estï¿½ vindo
                         ValidIssuer = "spmedical.webAPI",
 
-                        // define o nome da audience, para onde está indo
+                        // define o nome da audience, para onde estï¿½ indo
                         ValidAudience = "spmedical.webAPI"
                 };
             });

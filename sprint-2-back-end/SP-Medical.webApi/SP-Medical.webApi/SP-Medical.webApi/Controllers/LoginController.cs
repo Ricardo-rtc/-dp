@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SP_Medical.webApi.Domains;
@@ -6,11 +6,9 @@ using SP_Medical.webApi.Interfaces;
 using SP_Medical.webApi.Repositories;
 using SP_Medical.webApi.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
+
 
 namespace SP_Medical.webApi.Controllers
 {

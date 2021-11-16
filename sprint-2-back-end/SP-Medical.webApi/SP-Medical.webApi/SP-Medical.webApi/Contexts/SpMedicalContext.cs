@@ -33,7 +33,8 @@ namespace SP_Medical.webApi.Contexts
             if (!optionsBuilder.IsConfigured)
             {
 
-                optionsBuilder.UseSqlServer("Data Source = NOTE0113I2\\SQLEXPRESS; Initial Catalog = SPMEDICAL_R; user id = sa; pwd = Senai@132; ");
+                // optionsBuilder.UseSqlServer("Data Source = NOTE0113I2\\SQLEXPRESS; Initial Catalog = SPMEDICAL_R; user id = sa; pwd = Senai@132; ");
+                optionsBuilder.UseSqlServer("Data Source = DESKTOP-C8POL51\\SQLEXPRESS; Initial Catalog = SPMEDICAL_R; user id = sa; pwd = senai@132; ");
             }
         }
 
