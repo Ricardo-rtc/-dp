@@ -52,7 +52,11 @@ export default function ListarAdm() {
                                     <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
                                     <div  className="box_info">
                                         <p>Data</p>
-                                        <span>{Consulta.dataConsulta}</span>
+                                        <span>{ Intl.DateTimeFormat("pt-BR", {
+                                                year: 'numeric', month: 'short', day: 'numeric',
+                                                hour: 'numeric', minute: 'numeric',
+                                                hour12: true                                                
+                                            }).format(new Date(Consulta.dataConsulta)) }</span>
                                         <p>Descrição</p>
                                         <span>{Consulta.descricao}</span>
                                         <p>Situação</p>
@@ -67,7 +71,10 @@ export default function ListarAdm() {
                                         <p>CPF</p>
                                         <span>{Consulta.idPacienteNavigation.cpf}</span>
                                         <p>Data Nascimento</p>
-                                        <span>{Consulta.idPacienteNavigation.dataNasc}</span>
+                                        <span>{ Intl.DateTimeFormat("pt-BR", {
+                                                year: 'numeric', month: 'short', day: 'numeric',
+                                                                                              
+                                            }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</span>
                                         <p>Telefone</p>
                                         <span>{Consulta.idPacienteNavigation.telefone}</span>
                                         </div>
