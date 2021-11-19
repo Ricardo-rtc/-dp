@@ -48,8 +48,8 @@ export default function ListarAdm() {
                         {
                             listaConsultasAdm.map((Consulta) => {
                                 return (
-                                <div className="box_consulta">
-                                    <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
+                                <div className="box_consulta" key={Consulta.idConsulta}>
+                                    <h2 className="h2_consulta" >Consulta {Consulta.idConsulta}</h2>
                                     <div  className="box_info">
                                         <p>Data</p>
                                         <span>{ Intl.DateTimeFormat("pt-BR", {

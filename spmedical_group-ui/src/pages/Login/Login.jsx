@@ -1,7 +1,7 @@
 import '../../assets/css/login.css'
 import '../../assets/css/header.css'
 import Header from '../../components/header/header';
-import { parseJwt, usuarioAutenticado } from '../../services/auth';
+import { parseJwt } from '../../services/auth';
 
 
 import { Component } from "react";

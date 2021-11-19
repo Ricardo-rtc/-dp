@@ -14,7 +14,7 @@ export default function ListarMedico(){
     // const [ isLoading, setIsLoading ] = useState( false );
 
     function buscarConsultasMedico() {
-        console.log('vamos fazer a chamada para a API');
+        
 
         axios('http://localhost:5000/api/Consulta/minhas', {
             headers: {
@@ -47,7 +47,7 @@ export default function ListarMedico(){
             {
                             listaConsultasMedico.map((Consulta) => {
                                 return (
-                                <div className="box_consulta">
+                                <div className="box_consulta" key={Consulta.idConsulta}>
                                     <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
                                     <div  className="box_info">
                                         <p>Data</p>
@@ -77,15 +77,7 @@ export default function ListarMedico(){
                                         <p>Telefone</p>
                                         <span>{Consulta.idPacienteNavigation.telefone}</span>
                                         </div>
-                                        <h2 className="h2_consulta">Médico</h2>
-                                    <div  className="box_info">
-                                        <p>Nome</p>
-                                        <span>{Consulta.idMedicoNavigation.nomeMed}</span>
-                                        <p>CRM</p>
-                                        <span>{Consulta.idMedicoNavigation.crm}</span>
-                                        <p>Especialidade</p>
-                                        <span>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</span>
-                                        </div>
+                                        
                                 </div>
                                 )})}
             
