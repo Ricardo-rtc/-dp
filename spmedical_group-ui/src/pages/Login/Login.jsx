@@ -11,8 +11,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: 'bruno@gmail.com',
-            senha: 'bruno123',
+            email: 'saulo@hotmail.com',
+            senha: 'saulo123',
             erroMensagem: '',
             isLoading: false
         };
@@ -28,11 +28,12 @@ export default class Login extends Component {
 
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log("Meu token é: " + resposta.data.token)
+                    console.log(resposta.data.token)
                     localStorage.setItem('usuario-token', resposta.data.token)
                     this.setState({ isLoading: false });
-
-
+                    
+                   
+                    
                     switch (parseJwt().role) {
                         case '1':
                             // verifica se o usuário logado é do tipo paciente

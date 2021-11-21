@@ -2,42 +2,140 @@ import '../../assets/css/cadastro.css'
 import '../../assets/css/footer.css'
 import Header from '../../components/header/header';
 
-import { Component } from "react";
-// import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
-export default class Cadastrar extends Component {
 
-    render() {
-        return (
-            <div>
-                <Header></Header>
-                <main className="main_cadastro">
-        <div className="container container_consultas">
-            <h1>Cadastrar Consulta</h1>
-            <div className="box_consulta">
-                <form className="box_info-cadastro">
-                    <input type="date" placeholder="Data"></input>
-                    <input type="time" placeholder="Hora"></input>
-                    <input type="text" placeholder="Paciente"></input>
-                    <input type="text" placeholder="Médico"></input>
-                    <button type="submit">Cadastrar</button>
-                    
-                </form>
-                </div>
-            </div>
-        </main>
-        
-        <footer>
-            <div className="container container_footer">
-                <span className="span_footer">
-                    ©2020 Cia. da Consulta - Todos os direitos reservados
-                </span>
-                <span className="span_footer">
-                    Os médicos da Central de Consultas são especialistas ou estão em conclusão de sua pós-graduação.
-                </span>
-            </div>
-        </footer>
-            </div>
-        )
+export default function Cadastrar() {
+    const [listaPacientes, setListaPacientes] = useState([]);
+    const [listaMedicos, setListaMedicos] = useState([]);
+    
+
+    const [idPaciente, setIdPaciente] = useState(0);
+    const [idMedico, setIdMedico] = useState(0);
+    const [idSituacao, setIdSituacao] = useState(0);
+    const [dataConsulta, setDataConsulta] = useState(new Date());
+    const [descricao, setDescricao] = useState("");
+
+
+
+    function buscarPacientes() {
+        axios('http://localhost:5000/api/Paciente/tudo', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-token')
+            }
+        }).then(resposta => {
+            if (resposta.status === 200) {
+                setListaPacientes(resposta.data);
+                console.log(resposta.data)
+            }
+        }).catch((erro) => console.log(erro))
     }
+
+    useEffect(buscarPacientes, []);
+
+    function buscarMedico() {
+        axios('http://localhost:5000/api/Medico', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-token')
+            }
+        }).then(resposta => {
+            if (resposta.status === 200) {
+                setListaMedicos(resposta.data);
+                console.log(resposta.data)
+            }
+        }).catch((erro) => console.log(erro))
+    }
+
+    useEffect(buscarMedico, [])
+
+    // atualizaStateCampo = (campo) => {
+    //     this.setState({ [campo.target.name]: campo.target.value });
+    // };
+
+    function cadastrarConsulta(evento) {
+        evento.preventDefault();
+        axios.post('http://localhost:5000/api/Consulta', {
+            idPaciente: idPaciente,
+            idMedico: idMedico,
+            idSituacao: idSituacao,
+            dataConsulta: dataConsulta,
+            descricao: descricao
+        }, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-token'),
+            },
+        })
+            .then(resposta => {
+                if (resposta.status === 201) {
+                    console.log('Consulta Cadastrada')
+                    setIdPaciente(0);
+                    setIdMedico(0);
+                    setIdSituacao(0);
+                    setDataConsulta("");
+                    setDescricao("");
+
+                    
+                }
+            })
+            .catch((erro) => {
+                if (erro.toJSON().status === 401) {
+                    this.props.Props.history.push('/login')
+                }
+                else console.log(erro)
+            })
+    }
+    return (
+        <div>
+            <Header />
+            <main className="main_cadastro">
+                <div className="container container_consultas">
+                    <h1>Cadastrar Consulta</h1>
+                    <div className="box_consulta">
+                        <form className="box_info-cadastro" onSubmit={cadastrarConsulta}>
+                            <select name="paciente" id="paciente" value={idPaciente} defaultValue="0" onChange={(campo) => setIdPaciente(campo.target.value)} className="selects">
+                                <option value="0" selected disabled> Selecione o Paciente </option>
+                                {
+                                    listaPacientes.map((tema) => {
+                                        return (
+                                            <option key={tema.idPaciente} value={tema.idPaciente}>
+                                                {tema.nomePaciente}
+                                            </option>
+                                        );
+                                    })}
+                            </select>
+                            <input type="datetime-local" name="dataConsulta" defaultValue={dataConsulta} onChange={(campo) => setDataConsulta(campo.target.value)} />
+                            <select name="medico" defaultValue={descricao} onChange={(campo) => setIdMedico(campo.target.value)} className="selects">
+                                <option value="0" selected disabled>
+                                    Selecione o Medico
+                                </option>
+
+                                {listaMedicos.map((tema) => {
+                                    return (
+                                        <option key={tema.idMedico} value={tema.idMedico}>
+                                            {tema.nomeMed} 
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                            <input type="text" placeholder="Descrição" name="descricao" value={descricao} onChange={(campo) => setDescricao(campo.target.value)}></input>
+
+                            <button type="submit" className="btn_home">Cadastrar</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <div className="container container_footer">
+                    <span className="span_footer">
+                        ©2020 Cia. da Consulta - Todos os direitos reservados
+                    </span>
+                    <span className="span_footer">
+                        Os médicos da Central de Consultas são especialistas ou estão em conclusão de sua pós-graduação.
+                    </span>
+                </div>
+            </footer>
+        </div>
+    )
 }

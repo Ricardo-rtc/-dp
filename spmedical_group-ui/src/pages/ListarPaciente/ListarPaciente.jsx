@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function ListarPaciente() {
-    const [erroMensagem = ''] = useState([])
+    var [erroMensagem = ''] = useState([])
 
     const [listaConsultasPaciente, setListaConsultasPaciente] = useState([]);
     // const [ isLoading, setIsLoading ] = useState( false );
@@ -33,38 +33,44 @@ export default function ListarPaciente() {
     };
 
     function listarConsulta() {
-        if (listaConsultasPaciente != []) {
-
-            listaConsultasPaciente.map((Consulta) => {
-                return (
-                    <div className="box_consulta" key={Consulta.idConsulta}>
-                        <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
-                        <div className="box_info">
-                            <p>Data</p>
-                            <span>{Intl.DateTimeFormat("pt-BR", {
-                                year: 'numeric', month: 'short', day: 'numeric',
-                                hour: 'numeric', minute: 'numeric',
-                                hour12: true
-                            }).format(new Date(Consulta.dataConsulta))}</span>
-                            <p>Descrição</p>
-                            <span>{Consulta.descricao}</span>
-                            <p>Situação</p>
-                            <span>{Consulta.idSituacaoNavigation.situacao1}</span>
+        if (listaConsultasPaciente.length === 0) {
+           erroMensagem = 'Você não possui nenhuma consulta cadastrada'
+            
+            
+        } else  {
+            
+         
+            return(
+                listaConsultasPaciente.map((Consulta) => {
+                    return (
+                        <div className="box_consulta" key={Consulta.idConsulta}>
+                            <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
+                            <div className="box_info">
+                                <p>Data</p>
+                                <span>{Intl.DateTimeFormat("pt-BR", {
+                                    year: 'numeric', month: 'short', day: 'numeric',
+                                    hour: 'numeric', minute: 'numeric',
+                                    hour12: true
+                                }).format(new Date(Consulta.dataConsulta))}</span>
+                                <p>Descrição</p>
+                                <span>{Consulta.descricao}</span>
+                                <p>Situação</p>
+                                <span>{Consulta.idSituacaoNavigation.situacao1}</span>
+                            </div>
+                            <h2 className="h2_consulta">Médico</h2>
+                            <div className="box_info">
+                                <p>Nome</p>
+                                <span>{Consulta.idMedicoNavigation.nomeMed}</span>
+                                <p>CRM</p>
+                                <span>{Consulta.idMedicoNavigation.crm}</span>
+                                <p>Especialidade</p>
+                                <span>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</span>
+                            </div>
                         </div>
-                        <h2 className="h2_consulta">Médico</h2>
-                        <div className="box_info">
-                            <p>Nome</p>
-                            <span>{Consulta.idMedicoNavigation.nomeMed}</span>
-                            <p>CRM</p>
-                            <span>{Consulta.idMedicoNavigation.crm}</span>
-                            <p>Especialidade</p>
-                            <span>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</span>
-                        </div>
-                    </div>
-                )
-            })
-        } else {
-            return  erroMensagem = 'Você não possui nenhuma consulta cadastrada'
+                    )
+                })
+            )
+            
 
         }
 
@@ -85,8 +91,7 @@ export default function ListarPaciente() {
                     {
                         listarConsulta()
                     }
-
-                    <p style={{ color: 'red', fontSize: '25px' }}>{erroMensagem}</p>
+                    <p style={{ color: 'red', fontSize: '25px', padding: '10px'}}>{erroMensagem}</p>
                     <Link to='/'><button className="btn_home">Voltar</button></Link>
 
                 </div>

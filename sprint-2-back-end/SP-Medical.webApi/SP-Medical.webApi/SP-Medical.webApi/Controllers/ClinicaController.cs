@@ -24,7 +24,7 @@ namespace SP_Medical.webApi.Controllers
         }
 
         /// <summary>
-        /// Lista todas as clinicas
+        /// Método responsável por listar todas as clinicas
         /// </summary>
         /// <returns>uma lista de clinicas</returns>
         [Authorize]
@@ -42,7 +42,7 @@ namespace SP_Medical.webApi.Controllers
         }
 
         /// <summary>
-        /// Busca uma clinica pelo id
+        /// Método responsável por buscar uma clinica pelo id
         /// </summary>
         /// <param name="idClinica">id da clinica a ser procurada</param>
         /// <returns>Uma clinica</returns>
@@ -70,7 +70,7 @@ namespace SP_Medical.webApi.Controllers
         }
 
         /// <summary>
-        /// Cadastra uma nova clinica
+        /// Método responsável por cadastrar uma nova clinica
         /// </summary>
         /// <param name="novaClinica">Objeto clinica com os atributos a serem cadastrados</param>
         /// <returns>Status code 201 created</returns>
@@ -92,7 +92,7 @@ namespace SP_Medical.webApi.Controllers
         }
 
         /// <summary>
-        /// Atualiza uma clinica
+        /// Método responsável por atualizar uma clinica
         /// </summary>
         /// <param name="idClinica">Id da clinica a ser buscada</param>
         /// <param name="clinicaAtualizada">Objeto com atributos a serem inseridos</param>
@@ -115,7 +115,7 @@ namespace SP_Medical.webApi.Controllers
         }
 
         /// <summary>
-        /// Exclui uma clinica
+        /// Método responsável por excluir uma clinica
         /// </summary>
         /// <param name="idClinica">Id da clinica a ser buscada</param>
         /// <returns>Status code 204 no content</returns>

@@ -1,7 +1,7 @@
 import '../Home/App.css';
 import { Link } from 'react-router-dom';
 
-function NotFound() {
+export default function permissao() {
     return (
       <div className="App">
         <header className="App-header">
@@ -19,4 +19,3 @@ function NotFound() {
     );
   }
   
-  export default NotFound;

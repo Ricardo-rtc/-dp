@@ -6,27 +6,27 @@
     <members>
         <member name="M:SP_Medical.webApi.Controllers.ClinicasController.ListarTodas">
             <summary>
-            Lista todas as clinicas
+            Método responsável por listar todas as clinicas
             </summary>
             <returns>uma lista de clinicas</returns>
         </member>
         <member name="M:SP_Medical.webApi.Controllers.ClinicasController.BuscarPorId(System.Int32)">
             <summary>
-            Busca uma clinica pelo id
+            Método responsável por buscar uma clinica pelo id
             </summary>
             <param name="idClinica">id da clinica a ser procurada</param>
             <returns>Uma clinica</returns>
         </member>
         <member name="M:SP_Medical.webApi.Controllers.ClinicasController.Cadastrar(SP_Medical.webApi.Domains.Clinica)">
             <summary>
-            Cadastra uma nova clinica
+            Método responsável por cadastrar uma nova clinica
             </summary>
             <param name="novaClinica">Objeto clinica com os atributos a serem cadastrados</param>
             <returns>Status code 201 created</returns>
         </member>
         <member name="M:SP_Medical.webApi.Controllers.ClinicasController.Atualizar(System.Int32,SP_Medical.webApi.Domains.Clinica)">
             <summary>
-            Atualiza uma clinica
+            Método responsável por atualizar uma clinica
             </summary>
             <param name="idClinica">Id da clinica a ser buscada</param>
             <param name="clinicaAtualizada">Objeto com atributos a serem inseridos</param>
@@ -34,10 +34,81 @@
         </member>
         <member name="M:SP_Medical.webApi.Controllers.ClinicasController.Deletar(System.Int32)">
             <summary>
-            Exclui uma clinica
+            Método responsável por excluir uma clinica
             </summary>
             <param name="idClinica">Id da clinica a ser buscada</param>
             <returns>Status code 204 no content</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.LoginController.Login(SP_Medical.webApi.ViewModels.LoginViewModel)">
+            <summary>
+            Método responsável por fazer o login na api
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.MedicoController.Listar">
+            <summary>
+            Método responsavel por listar todos os médicos
+            </summary>
+            <returns>Uma lista de médicos</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.MedicoController.Buscar(System.Int32)">
+            <summary>
+            Método responsavel por buscar um médico por um id especifico
+            </summary>
+            <param name="id">Id do médico a ser buscado</param>
+            <returns>Medico encontrado</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.MedicoController.Cadastrar(SP_Medical.webApi.Domains.Medico)">
+            <summary>
+            Método responsavel por cadastrar um novo médico
+            </summary>
+            <param name="MedicoNovo">Objeto do tipo Médico a ser cadastrado</param>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.MedicoController.Atualizar(SP_Medical.webApi.Domains.Medico,System.Int32)">
+            <summary>
+            Método responsavel pela atualização de algum cadastro de médico
+            </summary>
+            <param name="MedicoAtualizado">Dados Atualizados</param>
+            <param name="id">Id do médico a ser atualizado</param>
+        </member>
+        <member name="M:SP_Medical.webApi.Controllers.MedicoController.Deletar(System.Int32)">
+            <summary>
+            Método responsavel por deletar um médico
+            </summary>
+            <param name="id">Id do médico a ser deletado</param>
+        </member>
+        <member name="M:SP_Medical.webApi.Interfaces.IMedicoRepository.Listar">
+            <summary>
+            Método responsavel por listar todos os médicos
+            </summary>
+            <returns>Uma lista de médicos</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Interfaces.IMedicoRepository.Buscar(System.Int32)">
+            <summary>
+            Método responsavel por buscar um médico por um id especifico
+            </summary>
+            <param name="id">Id do médico a ser buscado</param>
+            <returns>Medico encontrado</returns>
+        </member>
+        <member name="M:SP_Medical.webApi.Interfaces.IMedicoRepository.Cadastrar(SP_Medical.webApi.Domains.Medico)">
+            <summary>
+            Método responsavel por cadastrar um novo médico
+            </summary>
+            <param name="mediconovo">Objeto do tipo Médico a ser cadastrado</param>
+        </member>
+        <member name="M:SP_Medical.webApi.Interfaces.IMedicoRepository.Atualizar(SP_Medical.webApi.Domains.Medico,System.Int32)">
+            <summary>
+            Método responsavel pela atualização de algum cadastro de médico
+            </summary>
+            <param name="medicoatualizado">Dados Atualizados</param>
+            <param name="id">Id do médico a ser atualizado</param>
+        </member>
+        <member name="M:SP_Medical.webApi.Interfaces.IMedicoRepository.Deletar(System.Int32)">
+            <summary>
+            Método responsavel por deletar um médico
+            </summary>
+            <param name="id">Id do médico a ser deletado</param>
         </member>
     </members>
 </doc>

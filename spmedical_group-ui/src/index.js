@@ -26,6 +26,18 @@ const PermissaoAdm = ({ component: Component }) => (
     }
   />
 );
+const PermissaoAdmC = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() && parseJwt().role === '2' ? (
+        // operador spread
+        <Component {...props} />
+      ) : (
+        <Redirect to="permissao" />
+      )
+    }
+  />
+);
 
 const PermissaoPaciente = ({ component: Component }) => (
   <Route
@@ -63,7 +75,7 @@ const routing = (
         <Route path="/notFound" component={NotFound} /> {/* Not Found */}
         <Route path="/permissao" component={Permissao} /> {/* Not Found */}
         <PermissaoAdm path="/listarAdm" component={ListarAdm} /> {/* Listar Adm */}
-        <PermissaoAdm path="/cadastrar" component={Cadastrar} /> {/* Cadastrar */}
+        <PermissaoAdmC path="/cadastrar" component={Cadastrar} /> {/* Cadastrar */}
         <PermissaoPaciente path="/listarPaciente" component={ListarPaciente} /> {/* Listar Paciente */}
         <PermissaoMedico path="/listarMedico" component={ListarMedico} /> {/* Listar Médico */}
         <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}

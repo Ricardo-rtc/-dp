@@ -24,6 +24,11 @@ namespace SP_Medical.webApi.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Método responsável por fazer o login na api
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {
