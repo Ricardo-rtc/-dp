@@ -25,25 +25,23 @@ if(parseJwt() != null){
     switch (parseJwt().role) {
         case '1':
             // verifica se o usuário logado é do tipo paciente
-            // <Redirect to="/listarPaciente"  /> 
-            this.props.Props.history.push("/listarPaciente");
+            window.location.href = "/listarPaciente"
             console.log('estou logado: ' + usuarioAutenticado())
             
             break;
             case '2':
                 // verifica se o usuário logado é do tipo administrador
-                // <Redirect to="/listarAdm"  />
-                this.props.Props.history.push("/listarAdm");
+                window.location.href = "/listarAdm"
             console.log('estou logado: ' + usuarioAutenticado())
 
             break;
         case '3':
             // verifica se o usuário logado é do tipo médico
-            this.props.Props.history.push("/listarMedico");
+            window.location.href = "/listarMedico"
             console.log('estou logado: ' + usuarioAutenticado())
             break;
         default:
-            this.props.Props.history.push("/login");
+            window.location.href = "/login"
             console.log('estou logado: ' + usuarioAutenticado())
             break;
     }

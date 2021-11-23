@@ -2,14 +2,16 @@ import '../../assets/css/cadastro.css'
 import '../../assets/css/footer.css'
 import Header from '../../components/header/header';
 
+
+
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
 
-export default function Cadastrar() {
+export default function Cadastrar () {
     const [listaPacientes, setListaPacientes] = useState([]);
     const [listaMedicos, setListaMedicos] = useState([]);
-    
+
 
     const [idPaciente, setIdPaciente] = useState(0);
     const [idMedico, setIdMedico] = useState(0);
@@ -56,8 +58,8 @@ export default function Cadastrar() {
     function cadastrarConsulta(evento) {
         evento.preventDefault();
         axios.post('http://localhost:5000/api/Consulta', {
-            idPaciente: idPaciente,
             idMedico: idMedico,
+            idPaciente: idPaciente,
             idSituacao: idSituacao,
             dataConsulta: dataConsulta,
             descricao: descricao
@@ -72,15 +74,15 @@ export default function Cadastrar() {
                     setIdPaciente(0);
                     setIdMedico(0);
                     setIdSituacao(0);
-                    setDataConsulta("");
+                    setDataConsulta(new Date());
                     setDescricao("");
+                    window.location.href = "/listarAdm"
 
-                    
                 }
             })
             .catch((erro) => {
                 if (erro.toJSON().status === 401) {
-                    this.props.Props.history.push('/login')
+                    window.location.href = "/login"
                 }
                 else console.log(erro)
             })
@@ -88,12 +90,12 @@ export default function Cadastrar() {
     return (
         <div>
             <Header />
-            <main className="main_cadastro">
+            <main className="main_cadastro" >
                 <div className="container container_consultas">
                     <h1>Cadastrar Consulta</h1>
                     <div className="box_consulta">
                         <form className="box_info-cadastro" onSubmit={cadastrarConsulta}>
-                            <select name="paciente" id="paciente" value={idPaciente} defaultValue="0" onChange={(campo) => setIdPaciente(campo.target.value)} className="selects">
+                            <select name="paciente" id="paciente" defaultValue={idPaciente} value={idPaciente} onChange={(campo) => setIdPaciente(campo.target.value)} className="selects" required>
                                 <option value="0" selected disabled> Selecione o Paciente </option>
                                 {
                                     listaPacientes.map((tema) => {
@@ -104,8 +106,8 @@ export default function Cadastrar() {
                                         );
                                     })}
                             </select>
-                            <input type="datetime-local" name="dataConsulta" defaultValue={dataConsulta} onChange={(campo) => setDataConsulta(campo.target.value)} />
-                            <select name="medico" defaultValue={descricao} onChange={(campo) => setIdMedico(campo.target.value)} className="selects">
+                            <input type="datetime-local" name="DataConsulta" defaultValue={dataConsulta} onChange={(campo) => setDataConsulta(campo.target.value)} required />
+                            <select name="medico" defaultValue={idMedico} onChange={(campo) => setIdMedico(campo.target.value)} className="selects" required>
                                 <option value="0" selected disabled>
                                     Selecione o Medico
                                 </option>
@@ -113,12 +115,20 @@ export default function Cadastrar() {
                                 {listaMedicos.map((tema) => {
                                     return (
                                         <option key={tema.idMedico} value={tema.idMedico}>
-                                            {tema.nomeMed} 
+                                            {tema.nomeMed}
                                         </option>
                                     );
                                 })}
                             </select>
-                            <input type="text" placeholder="Descrição" name="descricao" value={descricao} onChange={(campo) => setDescricao(campo.target.value)}></input>
+                            <select name="situacao" defaultValue={idSituacao} onChange={(campo) => setIdSituacao(campo.target.value)} className="selects" required>
+                                <option value="0" selected disabled>Selecione a Situação</option>
+                                <option value="1">Agendada</option>
+                                <option value="2">Realizada</option>
+                                <option value="3">Cancelada</option>
+
+                                
+                            </select>
+                            <input type="text" placeholder="Descrição" name="descricao" value={descricao} onChange={(campo) => setDescricao(campo.target.value)} required />
 
                             <button type="submit" className="btn_home">Cadastrar</button>
                         </form>

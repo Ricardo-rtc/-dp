@@ -1,6 +1,7 @@
 import '../../assets/css/home.css'
 import '../../assets/css/footer.css'
 import '../../assets/css/consultas-listar.css'
+import Lapis from '../../assets/img/lapis.png';
 import Header from '../../components/header/header';
 
 import { Link } from 'react-router-dom';    
@@ -57,9 +58,9 @@ export default function ListarMedico(){
                                                 hour12: true                                                
                                             }).format(new Date(Consulta.dataConsulta)) }</span>
                                         <p>Descrição</p>
-                                        <span>{Consulta.descricao}</span>
+                                        <span className="space">{Consulta.descricao} <img className="lapis" src={Lapis} alt="Alterar Descrição" /></span>
                                         <p>Situação</p>
-                                        <span>{Consulta.idSituacaoNavigation.situacao1}</span>
+                                        <span className="space">{Consulta.idSituacaoNavigation.situacao1}<img className="lapis" src={Lapis} alt="Alterar situação" /></span>
                                     </div>
                                         <h2 className="h2_consulta">Paciente</h2>
                                     <div  className="box_info">

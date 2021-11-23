@@ -40,7 +40,7 @@ export default function ListarAdm() {
 
     return (
         <div>
-            <Header />
+            <Header  />
             <main className="main_listar">
                 <div className="container container_consultas">
                     <h1>Consultas</h1>
@@ -48,6 +48,7 @@ export default function ListarAdm() {
                         {
                             listaConsultasAdm.map((Consulta) => {
                                 return (
+                                    
                                 <div className="box_consulta" key={Consulta.idConsulta}>
                                     <h2 className="h2_consulta" >Consulta {Consulta.idConsulta}</h2>
                                     <div  className="box_info">
@@ -89,6 +90,7 @@ export default function ListarAdm() {
                                         </div>
                                 </div>
                                 )})}
+                                
 
                         <Link to='/'><button className="btn_home">Voltar</button></Link>
                     </div>

@@ -26,7 +26,6 @@
     justify-content: center;
 }
 
-
 h1{
     color: white;
     font-weight: bold;
@@ -77,6 +76,16 @@ h1{
     margin-bottom: 10px;
     width: 550px;
     padding: 3px 10px;
+}
+
+.space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.space img{
+    width: 20px;
+    height: 20px;
 }
 
 .selects{
