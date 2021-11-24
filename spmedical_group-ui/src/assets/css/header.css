@@ -86,7 +86,9 @@ header {
     }
     #menu {
         top: 135px;
-        left: 50px;
+        left: 0px;
+        height: max-content;
+        width: 100vw;
     }
 }
 

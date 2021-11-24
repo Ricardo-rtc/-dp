@@ -93,7 +93,7 @@ export default function Cadastrar () {
             <main className="main_cadastro" >
                 <div className="container container_consultas">
                     <h1>Cadastrar Consulta</h1>
-                    <div className="box_consulta">
+                    <div className="box_consulta-cadastro">
                         <form className="box_info-cadastro" onSubmit={cadastrarConsulta}>
                             <select name="paciente" id="paciente" defaultValue={idPaciente} value={idPaciente} onChange={(campo) => setIdPaciente(campo.target.value)} className="selects" required>
                                 <option value="0" selected disabled> Selecione o Paciente </option>

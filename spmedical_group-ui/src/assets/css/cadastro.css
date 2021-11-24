@@ -39,14 +39,14 @@ h1 {
     margin-bottom: 10px;
 }
 
-.box_consulta {
+.box_consulta-cadastro {
     border: white solid 3px;
     border-radius: 10px;
     padding: 45px 60px;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around; */
     margin-bottom: 30px;
 }
 

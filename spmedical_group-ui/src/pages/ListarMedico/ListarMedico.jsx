@@ -12,6 +12,7 @@ import React, { useState, useEffect } from 'react';
 export default function ListarMedico(){
     
     const [listaConsultasMedico, setListaConsultasMedico] = useState([]);
+    const [descricao, setDescricao] = useState("");
     // const [ isLoading, setIsLoading ] = useState( false );
 
     function buscarConsultasMedico() {
@@ -25,6 +26,7 @@ export default function ListarMedico(){
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaConsultasMedico(resposta.data)
+                    console.log(resposta.data)
                 }
             })
 
@@ -38,6 +40,45 @@ export default function ListarMedico(){
     // dessa forma, 
     useEffect(buscarConsultasMedico, []);
 
+    function atualizarDescricao(idConsulta){
+
+        axios.patch("http://localhost:5000/api/Consultas/" + idConsulta,{
+            descricaoConsulta: descricao
+        },{
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+        .then(resposta =>{
+            if (resposta.status === 204) {
+                console.log("descricao da consulta" + idConsulta + "atualizada");
+                // document.getElementById(idConsulta).setAttribute("readOnly");
+                var btn = document.getElementById("btn" + idConsulta)
+                btn.style.display = "none";
+                buscarConsultasMedico();
+                setDescricao("")
+            }
+        }).catch(erro => console.log(erro))
+    }
+
+    function permitirTextArea(idConsulta, descricaoConsulta) {
+        // console.log("Você está editando a situação da consulta " + idConsulta + "e a situação é " + idSituacao)
+        setDescricao(descricaoConsulta);   
+        console.log(descricaoConsulta)     
+        var textoDescricao = document.getElementById("descricao"+ idConsulta)
+        textoDescricao.removeAttribute("readOnly");
+        // descricao = descricaoConsulta
+        document.getElementById("descricao"+ idConsulta).value = descricaoConsulta
+
+        if (textoDescricao.value === null || textoDescricao.value === "") {
+            textoDescricao.value = "Consulta sem descrição";
+            
+        }
+        document.getElementById("btn"+ idConsulta)
+
+       
+    }
+
  
     return (
         <div>
@@ -49,40 +90,47 @@ export default function ListarMedico(){
                             listaConsultasMedico.map((Consulta) => {
                                 return (
                                 <div className="box_consulta" key={Consulta.idConsulta}>
-                                    <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
+                                    <div className="space">
+                                        <h2 className="h2_consulta" >Consulta {Consulta.idConsulta}</h2>
+                                        <button onClick={() => permitirTextArea(Consulta.idConsulta, Consulta.descricao)} type="button" className="vazio"><img className="lapis" src={Lapis} alt="Alterar situação" /></button>
+                                        
+                                    </div>
                                     <div  className="box_info">
-                                        <p>Data</p>
-                                        <span>{ Intl.DateTimeFormat("pt-BR", {
+                                        <h3>Data</h3>
+                                        <p>{ Intl.DateTimeFormat("pt-BR", {
                                                 year: 'numeric', month: 'short', day: 'numeric',
                                                 hour: 'numeric', minute: 'numeric',
                                                 hour12: true                                                
-                                            }).format(new Date(Consulta.dataConsulta)) }</span>
-                                        <p>Descrição</p>
-                                        <span className="space">{Consulta.descricao} <img className="lapis" src={Lapis} alt="Alterar Descrição" /></span>
-                                        <p>Situação</p>
-                                        <span className="space">{Consulta.idSituacaoNavigation.situacao1}<img className="lapis" src={Lapis} alt="Alterar situação" /></span>
+                                            }).format(new Date(Consulta.dataConsulta)) }</p>
+                                        <h3>Descrição</h3>
+                                        {/* <p id={"desc"+ Consulta.idConsulta}>{Consulta.descricao}</p> */}
+                                        <textarea name="descricao"  className="descricao" id={"descricao"+ Consulta.idConsulta}
+                                            cols="1" rows="5" readOnly  defaultvalue={descricao} onChange={(campo) => setDescricao(campo.target.value)}>{Consulta.descricao}</textarea>
+                                            <button id={"btn"+ Consulta.idConsulta} className="btn_home">ATUALIZAR</button>
+                                        <h3>Situação</h3>
+                                        <p>{Consulta.idSituacaoNavigation.situacao1}</p>
                                     </div>
                                         <h2 className="h2_consulta">Paciente</h2>
                                     <div  className="box_info">
-                                        <p>Nome</p>
-                                        <span>{Consulta.idPacienteNavigation.nomePaciente}</span>
-                                        <p>RG</p>
-                                        <span>{Consulta.idPacienteNavigation.rg}</span>
-                                        <p>CPF</p>
-                                        <span>{Consulta.idPacienteNavigation.cpf}</span>
-                                        <p>Data Nascimento</p>
-                                        <span>{ Intl.DateTimeFormat("pt-BR", {
+                                        <h3>Nome</h3>
+                                        <p>{Consulta.idPacienteNavigation.nomePaciente}</p>
+                                        <h3>RG</h3>
+                                        <p>{Consulta.idPacienteNavigation.rg}</p>
+                                        <h3>CPF</h3>
+                                        <p>{Consulta.idPacienteNavigation.cpf}</p>
+                                        <h3>Data Nascimento</h3>
+                                        <p>{ Intl.DateTimeFormat("pt-BR", {
                                                 year: 'numeric', month: 'short', day: 'numeric',
                                                                                               
-                                            }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</span>
-                                        <p>Telefone</p>
-                                        <span>{Consulta.idPacienteNavigation.telefone}</span>
+                                            }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</p>
+                                        <h3>Telefone</h3>
+                                        <p>{Consulta.idPacienteNavigation.telefone}</p>
                                         </div>
                                         
                                 </div>
                                 )})}
             
-                <Link to='/'><button className="btn_home">Voltar</button></Link>
+                <Link to='/'><button className="btn_home">VOLTAR</button></Link>
             </div>
     </main>
 

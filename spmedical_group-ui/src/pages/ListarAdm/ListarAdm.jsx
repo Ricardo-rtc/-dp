@@ -2,6 +2,8 @@ import '../../assets/css/home.css'
 import '../../assets/css/footer.css'
 import '../../assets/css/consultas-listar.css'
 import Header from '../../components/header/header';
+import Lapis from '../../assets/img/lapis.png';
+
 
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -40,31 +42,33 @@ export default function ListarAdm() {
 
     return (
         <div>
-            <Header  />
+            <Header />
             <main className="main_listar">
                 <div className="container container_consultas">
                     <h1>Consultas</h1>
-                    
-                        {
-                            listaConsultasAdm.map((Consulta) => {
-                                return (
-                                    
+                    {
+                        listaConsultasAdm.map((Consulta) => {
+                            return (
+
                                 <div className="box_consulta" key={Consulta.idConsulta}>
-                                    <h2 className="h2_consulta" >Consulta {Consulta.idConsulta}</h2>
-                                    <div  className="box_info">
+                                    <div className="space">
+                                        <h2 className="h2_consulta" >Consulta {Consulta.idConsulta}</h2>
+                                        <img className="lapis" src={Lapis} alt="Alterar situação" />
+                                    </div>
+                                    <div className="box_info">
                                         <p>Data</p>
-                                        <span>{ Intl.DateTimeFormat("pt-BR", {
-                                                year: 'numeric', month: 'short', day: 'numeric',
-                                                hour: 'numeric', minute: 'numeric',
-                                                hour12: true                                                
-                                            }).format(new Date(Consulta.dataConsulta)) }</span>
+                                        <span>{Intl.DateTimeFormat("pt-BR", {
+                                            year: 'numeric', month: 'short', day: 'numeric',
+                                            hour: 'numeric', minute: 'numeric',
+                                            hour12: true
+                                        }).format(new Date(Consulta.dataConsulta))}</span>
                                         <p>Descrição</p>
                                         <span>{Consulta.descricao}</span>
                                         <p>Situação</p>
                                         <span>{Consulta.idSituacaoNavigation.situacao1}</span>
                                     </div>
-                                        <h2 className="h2_consulta">Paciente</h2>
-                                    <div  className="box_info">
+                                    <h2 className="h2_consulta">Paciente</h2>
+                                    <div className="box_info">
                                         <p>Nome</p>
                                         <span>{Consulta.idPacienteNavigation.nomePaciente}</span>
                                         <p>RG</p>
@@ -72,28 +76,29 @@ export default function ListarAdm() {
                                         <p>CPF</p>
                                         <span>{Consulta.idPacienteNavigation.cpf}</span>
                                         <p>Data Nascimento</p>
-                                        <span>{ Intl.DateTimeFormat("pt-BR", {
-                                                year: 'numeric', month: 'short', day: 'numeric',
-                                                                                              
-                                            }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</span>
+                                        <span>{Intl.DateTimeFormat("pt-BR", {
+                                            year: 'numeric', month: 'short', day: 'numeric',
+
+                                        }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</span>
                                         <p>Telefone</p>
                                         <span>{Consulta.idPacienteNavigation.telefone}</span>
-                                        </div>
-                                        <h2 className="h2_consulta">Médico</h2>
-                                    <div  className="box_info">
+                                    </div>
+                                    <h2 className="h2_consulta">Médico</h2>
+                                    <div className="box_info">
                                         <p>Nome</p>
                                         <span>{Consulta.idMedicoNavigation.nomeMed}</span>
                                         <p>CRM</p>
                                         <span>{Consulta.idMedicoNavigation.crm}</span>
                                         <p>Especialidade</p>
                                         <span>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</span>
-                                        </div>
+                                    </div>
                                 </div>
-                                )})}
-                                
+                            )
+                        })}
 
-                        <Link to='/'><button className="btn_home">Voltar</button></Link>
-                    </div>
+
+                    <Link to='/'><button className="btn_home">Voltar</button></Link>
+                </div>
             </main>
 
             <footer>
