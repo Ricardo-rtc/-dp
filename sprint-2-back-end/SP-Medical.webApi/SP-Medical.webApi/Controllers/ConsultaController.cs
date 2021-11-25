@@ -157,13 +157,13 @@ namespace SP_Medical.webApi.Controllers
             }
         }
 
-        [Authorize(Roles = "3")]
-        [HttpPatch("{id}")]
+        [Authorize(Roles = "2")]
+        [HttpPatch("situacao/{id}")]
         public IActionResult Patch(int id, Consultum status)
         {
             try
             {
-                Con.Situacao(id, status.IdSituacao.ToString());
+                Con.Situacao(id, ToString());
                 return StatusCode(204);
             }
             catch (Exception ex)
@@ -171,5 +171,20 @@ namespace SP_Medical.webApi.Controllers
                 return BadRequest(ex);
             }
         }
+
+        //[Authorize(Roles = "3")]
+        //[HttpPatch("situacao/{id}")]
+        //public IActionResult PatchDesc(int id, Consultum status)
+        //{
+        //    try
+        //    {
+        //        Con.Situacao(id, ToString());
+        //        return StatusCode(204);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex);
+        //    }
+        //}
     }
 }
