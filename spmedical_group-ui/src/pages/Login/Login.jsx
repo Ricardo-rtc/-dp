@@ -5,14 +5,15 @@ import { parseJwt } from '../../services/auth';
 
 
 import { Component } from "react";
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../../services/api';
 
 export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: 'ricardo.lemos@spmedicalgroup.com.br',
-            senha: 'lemos123',
+            email: 'saulo@hotmail.com',
+            senha: 'saulo123',
             erroMensagem: '',
             isLoading: false
         };
@@ -21,7 +22,7 @@ export default class Login extends Component {
     efetuaLogin = (event) => {
         this.setState({ erroMensagem: " ", isLoading: true })
         event.preventDefault();
-        axios.post('http://localhost:5000/api/login', {
+        api.post('/login', {
             email: this.state.email,
             senha: this.state.senha
         })

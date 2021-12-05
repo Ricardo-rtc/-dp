@@ -5,8 +5,8 @@ import Lapis from '../../assets/img/lapis.png';
 import Header from '../../components/header/header';
 
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import api from '../../services/api';
 
 
 export default function ListarMedico() {
@@ -18,7 +18,7 @@ export default function ListarMedico() {
     function buscarConsultasMedico() {
 
 
-        axios('http://localhost:5000/api/Consulta/minhas', {
+        api.get('/Consulta/minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-token')
             }
@@ -42,7 +42,7 @@ export default function ListarMedico() {
 
     function atualizarDescricao(idConsulta) {
 
-        axios.patch("http://localhost:5000/api/Consulta/" + idConsulta, {
+        api.patch("/Consulta/" + idConsulta, {
             descricaoConsulta: descricao
         }, {
             headers: {

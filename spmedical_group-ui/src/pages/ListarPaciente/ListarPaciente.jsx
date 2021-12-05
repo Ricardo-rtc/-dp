@@ -3,9 +3,10 @@ import '../../assets/css/footer.css'
 import '../../assets/css/consultas-listar.css'
 import Header from '../../components/header/header';
 
-import axios from 'axios';
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
 
 
 export default function ListarPaciente() {
@@ -17,7 +18,7 @@ export default function ListarPaciente() {
     function buscarConsultasPaciente() {
 
 
-        axios('http://localhost:5000/api/Consulta/minhas', {
+        api.get('/Consulta/minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-token')
             }

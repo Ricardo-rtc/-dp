@@ -2,12 +2,9 @@ import '../../assets/css/home.css'
 import '../../assets/css/footer.css'
 import '../../assets/css/consultas-listar.css'
 import Header from '../../components/header/header';
-import Lapis from '../../assets/img/lapis.png';
-
-
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
 
 
 export default function ListarAdm() {
@@ -18,7 +15,7 @@ export default function ListarAdm() {
     function buscarConsultasAdm() {
         console.log('vamos fazer a chamada para a API');
 
-        axios('http://localhost:5000/api/Consulta/listarTodos', {
+        api.get('/Consulta/listarTodos', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-token')
             }
@@ -53,44 +50,44 @@ export default function ListarAdm() {
                                 <div className="box_consulta" key={Consulta.idConsulta}>
                                     <div className="space">
                                         <h2 className="h2_consulta" >Consulta {Consulta.idConsulta}</h2>
-                                        <img className="lapis" src={Lapis} alt="Alterar situação" />
+                                        
                                     </div>
                                     <div className="box_info">
-                                        <p>Data</p>
-                                        <span>{Intl.DateTimeFormat("pt-BR", {
+                                        <h3>Data</h3>
+                                        <p>{Intl.DateTimeFormat("pt-BR", {
                                             year: 'numeric', month: 'short', day: 'numeric',
                                             hour: 'numeric', minute: 'numeric',
                                             hour12: true
-                                        }).format(new Date(Consulta.dataConsulta))}</span>
-                                        <p>Descrição</p>
-                                        <span>{Consulta.descricao}</span>
-                                        <p>Situação</p>
-                                        <span>{Consulta.idSituacaoNavigation.situacao1}</span>
+                                        }).format(new Date(Consulta.dataConsulta))}</p>
+                                        <h3>Descrição</h3>
+                                        <p>{Consulta.descricao}</p>
+                                        <h3>Situação</h3>
+                                        <p>{Consulta.idSituacaoNavigation.situacao1}</p>
                                     </div>
                                     <h2 className="h2_consulta">Paciente</h2>
                                     <div className="box_info">
-                                        <p>Nome</p>
-                                        <span>{Consulta.idPacienteNavigation.nomePaciente}</span>
-                                        <p>RG</p>
-                                        <span>{Consulta.idPacienteNavigation.rg}</span>
-                                        <p>CPF</p>
-                                        <span>{Consulta.idPacienteNavigation.cpf}</span>
-                                        <p>Data Nascimento</p>
-                                        <span>{Intl.DateTimeFormat("pt-BR", {
+                                        <h3>Nome</h3>
+                                        <p>{Consulta.idPacienteNavigation.nomePaciente}</p>
+                                        <h3>RG</h3>
+                                        <p>{Consulta.idPacienteNavigation.rg}</p>
+                                        <h3>CPF</h3>
+                                        <p>{Consulta.idPacienteNavigation.cpf}</p>
+                                        <h3>Data Nascimento</h3>
+                                        <p>{Intl.DateTimeFormat("pt-BR", {
                                             year: 'numeric', month: 'short', day: 'numeric',
 
-                                        }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</span>
-                                        <p>Telefone</p>
-                                        <span>{Consulta.idPacienteNavigation.telefone}</span>
+                                        }).format(new Date(Consulta.idPacienteNavigation.dataNasc))}</p>
+                                        <h3>Telefone</h3>
+                                        <p>{Consulta.idPacienteNavigation.telefone}</p>
                                     </div>
                                     <h2 className="h2_consulta">Médico</h2>
                                     <div className="box_info">
-                                        <p>Nome</p>
-                                        <span>{Consulta.idMedicoNavigation.nomeMed}</span>
-                                        <p>CRM</p>
-                                        <span>{Consulta.idMedicoNavigation.crm}</span>
-                                        <p>Especialidade</p>
-                                        <span>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</span>
+                                        <h3>Nome</h3>
+                                        <p>{Consulta.idMedicoNavigation.nomeMed}</p>
+                                        <h3>CRM</h3>
+                                        <p>{Consulta.idMedicoNavigation.crm}</p>
+                                        <h3>Especialidade</h3>
+                                        <p>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</p>
                                     </div>
                                 </div>
                             )

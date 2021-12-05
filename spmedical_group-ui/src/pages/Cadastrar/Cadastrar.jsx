@@ -5,7 +5,7 @@ import Header from '../../components/header/header';
 
 
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import api from '../../services/api';
 
 
 export default function Cadastrar () {
@@ -22,7 +22,7 @@ export default function Cadastrar () {
 
 
     function buscarPacientes() {
-        axios('http://localhost:5000/api/Paciente/tudo', {
+        api.get('/Paciente/tudo', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-token')
             }
@@ -37,7 +37,7 @@ export default function Cadastrar () {
     useEffect(buscarPacientes, []);
 
     function buscarMedico() {
-        axios('http://localhost:5000/api/Medico', {
+        api.get('/Medico', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-token')
             }
@@ -57,7 +57,7 @@ export default function Cadastrar () {
 
     function cadastrarConsulta(evento) {
         evento.preventDefault();
-        axios.post('http://localhost:5000/api/Consulta', {
+        api.post('/Consulta', {
             idMedico: idMedico,
             idPaciente: idPaciente,
             idSituacao: idSituacao,
