@@ -42,7 +42,7 @@ export default function ListarMedico() {
 
     function atualizarDescricao(idConsulta) {
 
-        api.patch("/Consulta/" + idConsulta, {
+        api.patch("/Consulta/descricao/" + idConsulta, {
             descricaoConsulta: descricao
         }, {
             headers: {

@@ -45,6 +45,7 @@ export default class Listar extends Component {
 
     render() {
         return (
+        
             <View style={styles.overlay}>
                 
                     <View style={styles.main}>

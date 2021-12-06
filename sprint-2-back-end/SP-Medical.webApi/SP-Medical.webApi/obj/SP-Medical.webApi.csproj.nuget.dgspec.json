@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ricardo\\Desktop\\SENAI\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj": {}
+    "C:\\Users\\50928811867\\Desktop\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ricardo\\Desktop\\SENAI\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj": {
+    "C:\\Users\\50928811867\\Desktop\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ricardo\\Desktop\\SENAI\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj",
+        "projectUniqueName": "C:\\Users\\50928811867\\Desktop\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj",
         "projectName": "SP-Medical.webApi",
-        "projectPath": "C:\\Users\\Ricardo\\Desktop\\SENAI\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj",
-        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ricardo\\Desktop\\SENAI\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\obj\\",
+        "projectPath": "C:\\Users\\50928811867\\Desktop\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\SP-Medical.webApi.csproj",
+        "packagesPath": "C:\\Users\\50928811867\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\50928811867\\Desktop\\SP-Medical-Group\\sprint-2-back-end\\SP-Medical.webApi\\SP-Medical.webApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\50928811867\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
