@@ -174,12 +174,25 @@ namespace SP_Medical.webApi.Controllers
 
         [Authorize(Roles = "3")]
         [HttpPatch("descricao/{id}")]
-        public IActionResult PatchDesc(int id, string DescricaoAtualizada, Consultum status)
+        public IActionResult PatchDesc(int id, AtualizarDescricaoViewModel AtualizarDescricao)
         {
+            
             try
             {
-                Con.AtualizarDescricao(id, DescricaoAtualizada);
-                return StatusCode(200);
+                Consultum ConsultaBuscada = Con.BuscarPorId(id);
+
+                if (ConsultaBuscada != null)
+                {
+
+                    Con.AtualizarDescricao(id, AtualizarDescricao.Descricao);
+
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Consulta informada não encontrada" });
+                }
+
+                return StatusCode(204);
             }
             catch (Exception ex)
             {

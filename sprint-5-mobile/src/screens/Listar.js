@@ -45,8 +45,9 @@ export default class Listar extends Component {
 
     render() {
         return (
-        
+            <View>
             <View style={styles.overlay}>
+        </View>
                 
                     <View style={styles.main}>
                         <Image
@@ -75,9 +76,10 @@ export default class Listar extends Component {
     renderItem = ({ item }) => (
         <View>
             <View style={styles.ListarDiv}>
+                    <Text style={styles.ListagemNome}>{'DIA '+ item.idConsulta }</Text>
                 <View style={styles.Box_Projeto}>
-                    <Text style={styles.ListagemNome}>{'CONSULTA '+ item.idConsulta }</Text>
-                </View>
+                    </View>
+                
 
                 <Text style={styles.ListagemTitulo}>Data</Text>
                 <Text style={styles.ListagemDados}>{Intl.DateTimeFormat("pt-BR", {
@@ -113,21 +115,21 @@ export default class Listar extends Component {
                 <Text style={styles.ListagemTitulo}>Especialidade</Text>
                 <Text style={styles.ListagemDados}>{item.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</Text>
 
-
+                
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    mainBodyContent: {
-        backgroundColor: "#440793",
-        width: 300,
-        height: 320,
-        borderRadius: 20,
-        marginTop: 30,
-        marginBottom: 300,
-    },
+    // mainBodyContent: {
+    //     backgroundColor: "#440793",
+    //     width: 300,
+    //     height: 320,
+    //     borderRadius: 20,
+    //     marginTop: 30,
+    //     marginBottom: 300,
+    // },
 
     Box_tiutlo: {
         alignItems: 'center',
@@ -135,16 +137,12 @@ const styles = StyleSheet.create({
         width:320
     },
 
-    Fundo: {
-        flex: 1,
-        backgroundColor: 'rgba(109, 175, 236, 1)'
-    },
+    
 
     Container: {
         flex: 1,
-        marginLeft: 35,
-        marginRight: 35,
-        marginBottom: 35
+        
+        marginBottom: 25
     },
 
     Titulo: {
@@ -156,23 +154,24 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2
     },
 
-    Listagem: {
-        color: "white",
-        borderColor: 'white',
-        fontWeight: 'bold'
-    },
+    // Listagem: {
+    //     color: "white",
+    //     borderColor: 'white',
+    //     fontWeight: 'bold'
+    // },
 
-    Box_Projeto: {
+    // Box_Projeto: {
         
-        // backgroundColor
+    //     paddingRight:50,
+    //     paddingLeft:50
         
-    },
+    // },
 
     ListagemNome: {
         color: 'white',
         fontWeight: "900",
         fontSize: 18,
-        marginLeft: 8,
+        marginLeft: 22,
         margin: 3
     },
 
@@ -187,30 +186,28 @@ const styles = StyleSheet.create({
         padding:5,
         borderColor: 'white',
         borderWidth:2,
-        borderRadius:25
+        borderRadius:25,
+        paddingLeft:20,
+        paddingTop:10,
+        paddingBottom:10,
     },
 
     ListagemTitulo: {
         color: "white",
         fontWeight: "600",
         fontSize: 18,
-        marginLeft: 8,
+        marginLeft: 22,
         marginTop: 10,
-        marginBottom: 3
     },
 
-    ListagemExemplo: {
-        color: 'black',
-        marginLeft: 10,
-        fontSize: 12,
-        marginBottom: 32
-    },
 
     ListarDiv: {
         borderColor: 'white',
         borderWidth: 3,
         borderRadius: 10,
-        marginTop: 20
+        marginTop: 20,
+        padding:10
+        
         // alignItems: 'flex-end'
     },
 

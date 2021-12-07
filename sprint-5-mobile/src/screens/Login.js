@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     //antes da main
     overlay: {
         ...StyleSheet.absoluteFillObject, //todas as prop do styleShhet, e vamos aplica o abosluteFIL...
-        backgroundColor: 'rgba(109, 175, 236, 0.75)', //rgba pq vamos trabalhar com transparencia.
+        backgroundColor: 'rgba(5, 91, 192, 0.60);', //rgba pq vamos trabalhar com transparencia.
     },
 
     // conteúdo da main
@@ -123,24 +123,30 @@ const styles = StyleSheet.create({
         borderWidth: 4, //espessura.
         borderRadius: 25,
         backgroundColor: 'transparent',
-        padding:50,
+        paddingLeft:30,
+        paddingRight:30,
+        paddingTop:50,
+        paddingBottom:50,
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     inputLogin: {
-        width: 240, //largura mesma do botao
+        width: 260, //largura mesma do botao
         marginBottom: 40, //espacamento pra baixo
         fontSize: 18,
         color: '#FFF',
         borderColor: '#FFF', //linha separadora
-        borderWidth: 4, //espessura.
+        borderWidth: 3, //espessura.
         borderRadius: 25,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        paddingLeft:20,
+        paddingTop:10,
+        paddingBottom:10,
     },
 
     btnLoginText: {
-        fontSize: 18, //aumentar um pouco
+        fontSize: 16, //aumentar um pouco
         fontFamily: 'Open Sans Light', //troca de fonte
         color: '#fff', //mesma cor identidade
         // letterSpacing: 6, //espacamento entre as letras
