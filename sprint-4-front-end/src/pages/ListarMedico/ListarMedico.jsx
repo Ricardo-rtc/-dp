@@ -43,7 +43,7 @@ export default function ListarMedico() {
     function atualizarDescricao(idConsulta) {
 
         api.patch("/Consulta/descricao/" + idConsulta, {
-            descricaoConsulta: descricao
+            descricao: descricao
         }, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-token')
@@ -51,10 +51,15 @@ export default function ListarMedico() {
         })
             .then(resposta => {
                 if (resposta.status === 204) {
-                    console.log("descricao da consulta" + idConsulta + "atualizada");
+                    console.log("descricao da consulta " + idConsulta + " atualizada");
                     // document.getElementById(idConsulta).setAttribute("readOnly");
                     var btn = document.getElementById("btn" + idConsulta)
+                    var p = document.getElementById("desc"+ idConsulta);
+                    var textarea = document.getElementById("descricao"+ idConsulta) 
                     btn.style.display = "none";
+                    p.style.display = "";
+                    textarea.style.display = "none";
+                    
                     buscarConsultasMedico();
                     setDescricao("")
                 }
@@ -75,13 +80,19 @@ export default function ListarMedico() {
 
         }
         var btn = document.getElementById("btn" + idConsulta);
+        var p = document.getElementById("desc"+ idConsulta);
+        var textarea = document.getElementById("descricao"+ idConsulta);
 
         if (btn.style.display === "none") {
             btn.style.display = "";
-            textoDescricao.removeAttribute("readOnly");
+            p.style.display = "none";
+            textarea.style.display = "";
+            // textoDescricao.removeAttribute("readOnly");
         } else {
 
-            document.getElementById("descricao" + idConsulta).setAttribute("readOnly", "readOnly");
+
+            p.style.display = "";
+            textarea.style.display = "none";
 
             setDescricao("")
             btn.style.display = "none";
@@ -114,9 +125,9 @@ export default function ListarMedico() {
                                             hour12: true
                                         }).format(new Date(Consulta.dataConsulta))}</p>
                                         <h3>Descrição</h3>
-                                        {/* <p id={"desc"+ Consulta.idConsulta}>{Consulta.descricao}</p> */}
-                                        <textarea name="descricao" className="descricao" id={"descricao" + Consulta.idConsulta}
-                                            cols="1" rows="5" readOnly defaultValue={Consulta.descricao} onChange={(campo) => setDescricao(campo.target.value)}></textarea>
+                                        <p id={"desc"+ Consulta.idConsulta} style={{ display: "" }}>{Consulta.descricao}</p>
+                                        <input name="descricao" className="descricao" id={"descricao" + Consulta.idConsulta}
+                                            cols="1" rows="5"  value={descricao} onChange={(campo) => setDescricao(campo.target.value)} style={{ display: "none" }}></input>
                                         <button onClick={() =>atualizarDescricao(Consulta.idConsulta)} style={{ display: "none" }} id={"btn" + Consulta.idConsulta} className="btn_home">ATUALIZAR</button>
                                         <h3>Situação</h3>
                                         <p>{Consulta.idSituacaoNavigation.situacao1}</p>
