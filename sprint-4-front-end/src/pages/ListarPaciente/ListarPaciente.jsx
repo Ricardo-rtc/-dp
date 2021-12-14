@@ -2,6 +2,7 @@ import '../../assets/css/home.css'
 import '../../assets/css/footer.css'
 import '../../assets/css/consultas-listar.css'
 import Header from '../../components/header/header';
+import marker from '../../assets/img/mapmarker.png';
 
 
 import React, { useState, useEffect } from 'react';
@@ -47,25 +48,29 @@ export default function ListarPaciente() {
                         <div className="box_consulta" key={Consulta.idConsulta}>
                             <h2 className="h2_consulta">Consulta {Consulta.idConsulta}</h2>
                             <div className="box_info">
-                                <p>Data</p>
-                                <span>{Intl.DateTimeFormat("pt-BR", {
+                                <h3>Data</h3>
+                                <p>{Intl.DateTimeFormat("pt-BR", {
                                     year: 'numeric', month: 'short', day: 'numeric',
                                     hour: 'numeric', minute: 'numeric',
                                     hour12: true
-                                }).format(new Date(Consulta.dataConsulta))}</span>
-                                <p>Descrição</p>
-                                <span>{Consulta.descricao}</span>
-                                <p>Situação</p>
-                                <span>{Consulta.idSituacaoNavigation.situacao1}</span>
+                                }).format(new Date(Consulta.dataConsulta))}</p>
+                                <h3>Descrição</h3>
+                                <p>{Consulta.descricao}</p>
+                                <h3>Situação</h3>
+                                <p>{Consulta.idSituacaoNavigation.situacao1}</p>
                             </div>
                             <h2 className="h2_consulta">Médico</h2>
                             <div className="box_info">
-                                <p>Nome</p>
-                                <span>{Consulta.idMedicoNavigation.nomeMed}</span>
-                                <p>CRM</p>
-                                <span>{Consulta.idMedicoNavigation.crm}</span>
-                                <p>Especialidade</p>
-                                <span>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</span>
+                                <h3>Nome</h3>
+                                <p>{Consulta.idMedicoNavigation.nomeMed}</p>
+                                <h3>CRM</h3>
+                                <p>{Consulta.idMedicoNavigation.crm}</p>
+                                <h3>Especialidade</h3>
+                                <p>{Consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</p>
+                                <h3>Clínica</h3>
+                                <p>{Consulta.idMedicoNavigation.idClinicaNavigation.nomeFantasia}</p>
+                                <h3>Endereço Clínica</h3>
+                                <p>{Consulta.idMedicoNavigation.idClinicaNavigation.idEnderecoNavigation.rua}, {Consulta.idMedicoNavigation.idClinicaNavigation.idEnderecoNavigation.numero}<button className="img-map"><img  src={marker}/></button></p>
                             </div>
                         </div>
                     )

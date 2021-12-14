@@ -91,6 +91,17 @@ namespace SP_Medical.webApi.Repositories
                            IdEspecialidade = c.IdMedicoNavigation.IdEspecialidadeNavigation.IdEspecialidade,
                            TituloEspecialidade = c.IdMedicoNavigation.IdEspecialidadeNavigation.TituloEspecialidade
                        },
+                       IdClinicaNavigation = new Clinica
+                       {
+                           IdClinica = c.IdMedicoNavigation.IdClinicaNavigation.IdClinica,
+                           NomeFantasia = c.IdMedicoNavigation.IdClinicaNavigation.NomeFantasia,
+                           IdEnderecoNavigation = new Endereco
+                           {
+                               IdEndereco = c.IdMedicoNavigation.IdClinicaNavigation.IdEnderecoNavigation.IdEndereco,
+                               Rua = c.IdMedicoNavigation.IdClinicaNavigation.IdEnderecoNavigation.Rua,
+                               Numero = c.IdMedicoNavigation.IdClinicaNavigation.IdEnderecoNavigation.Numero
+                           },
+                       },
                    },
                    IdSituacaoNavigation = new Situacao
                    {
