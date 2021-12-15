@@ -79,6 +79,15 @@ h2 {
     background-color: unset;
 }
 
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.box_info-cadastro ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;  
+}
+
 .box_info-cadastro button {
     width: 197px;
     height: 60px;

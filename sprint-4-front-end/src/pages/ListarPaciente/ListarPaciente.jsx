@@ -70,7 +70,7 @@ export default function ListarPaciente() {
                                 <h3>Clínica</h3>
                                 <p>{Consulta.idMedicoNavigation.idClinicaNavigation.nomeFantasia}</p>
                                 <h3>Endereço Clínica</h3>
-                                <p>{Consulta.idMedicoNavigation.idClinicaNavigation.idEnderecoNavigation.rua}, {Consulta.idMedicoNavigation.idClinicaNavigation.idEnderecoNavigation.numero}<button className="img-map"><img  src={marker}/></button></p>
+                                <p>{Consulta.idMedicoNavigation.idClinicaNavigation.idEnderecoNavigation.rua}, {Consulta.idMedicoNavigation.idClinicaNavigation.idEnderecoNavigation.numero}<Link className="img-map" to="/mapa"><img alt="Imagem marcador" src={marker}/></Link></p>
                             </div>
                         </div>
                     )

@@ -11,6 +11,7 @@ import Permissao from './pages/Permissao/permissao.js';
 import ListarAdm from './pages/ListarAdm/ListarAdm.jsx';
 import ListarPaciente from './pages/ListarPaciente/ListarPaciente.jsx';
 import ListarMedico from './pages/ListarMedico/ListarMedico.jsx';
+import Mapa from './pages/Mapa/Mapa';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -78,6 +79,7 @@ const routing = (
         <PermissaoAdmC path="/cadastrar" component={Cadastrar} /> {/* Cadastrar */}
         <PermissaoPaciente path="/listarPaciente" component={ListarPaciente} /> {/* Listar Paciente */}
         <PermissaoMedico path="/listarMedico" component={ListarMedico} /> {/* Listar Médico */}
+        <Route path="/mapa" component={Mapa} /> {/* Listar Médico */}
         <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}
       </Switch>
     </div>

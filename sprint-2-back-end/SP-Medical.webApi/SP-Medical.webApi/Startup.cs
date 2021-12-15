@@ -35,7 +35,7 @@ namespace SP_Medical.webApi
                 options.AddPolicy("CorPolicy",
                                 builder =>
                                 {
-                                    builder.WithOrigins("http://localhost:3000","http://192.168.1.11:3000","http://209.14.226.28:3000")
+                                    builder.WithOrigins("*")
                                     .AllowAnyHeader()
                                     .AllowAnyMethod();
                                 });
