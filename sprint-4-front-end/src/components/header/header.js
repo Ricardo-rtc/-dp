@@ -13,45 +13,38 @@ export default class Header extends Component {
         nav.classList.toggle('active');
     }
 
-    listar = () => { 
-        
-        console.log("logou")
+    listar = () => {
+        if (parseJwt() != null) {
+            switch (parseJwt().role) {
+                case '1':
+                    // verifica se o usuário logado é do tipo paciente
+                    window.location.href = "/listarPaciente"
+                    console.log('estou logado: ' + usuarioAutenticado())
 
+                    break;
+                case '2':
+                    // verifica se o usuário logado é do tipo administrador
+                    window.location.href = "/listarAdm"
+                    console.log('estou logado: ' + usuarioAutenticado())
 
-if(parseJwt() != null){
+                    break;
+                case '3':
+                    // verifica se o usuário logado é do tipo médico
+                    window.location.href = "/listarMedico"
+                    console.log('estou logado: ' + usuarioAutenticado())
+                    break;
+                default:
+                    window.location.href = "/login"
+                    console.log('estou logado: ' + usuarioAutenticado())
+                    break;
+            }
+        } else {
+            alert("Usuario nao está logado.")
+        }}
 
-
-
-    switch (parseJwt().role) {
-        case '1':
-            // verifica se o usuário logado é do tipo paciente
-            window.location.href = "/listarPaciente"
-            console.log('estou logado: ' + usuarioAutenticado())
-            
-            break;
-            case '2':
-                // verifica se o usuário logado é do tipo administrador
-                window.location.href = "/listarAdm"
-            console.log('estou logado: ' + usuarioAutenticado())
-
-            break;
-        case '3':
-            // verifica se o usuário logado é do tipo médico
-            window.location.href = "/listarMedico"
-            console.log('estou logado: ' + usuarioAutenticado())
-            break;
-        default:
-            window.location.href = "/login"
-            console.log('estou logado: ' + usuarioAutenticado())
-            break;
-    }
-
-}else{
-    alert("Usuario nao está logado.")
-}
-
-       
-    }
+        logout = () => {
+            localStorage.removeItem('usuario-token')
+        }
 
     render() {
 
@@ -65,8 +58,9 @@ if(parseJwt() != null){
                         <ul id="menu">
                             <Link to="/">Home</Link>
                             <Link to="/cadastrar">Cadastrar</Link>
-                            <button onClick={() => this.listar()}>Listar</button>   
-                            
+                            <button onClick={() => this.listar()}>Listar</button>
+                            <Link to="/login" onClick={() => this.logout()}>Sair</Link>
+
                         </ul>
 
                     </nav>

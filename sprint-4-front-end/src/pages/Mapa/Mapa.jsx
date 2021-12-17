@@ -5,15 +5,30 @@ export class MapContainer extends Component {
     constructor(props) {
         super(props)
         this.state= {
-            selectedPlace: ""
+            selectedPlace: "",
+            stores: [
+              { latitude: -23.536381, longitude: -46.6461279, local: "Clínica Possarle" }]
+          
         }
+    }
+
+    displayMarkers = () => {
+      return this.state.stores.map((store, index) => {
+        return <Marker key={index} id={index} position={{
+          lat: store.latitude,
+          lng: store.longitude
+        }}
+        />
+      })
     }
   render() {
     return (
-      <Map google={this.props.google} zoom={14}>
+      
+      <Map google={this.props.google} zoom={18}  initialCenter={{ lat: -23.536381, lng: -46.6461279 }}>
+
+ {this.displayMarkers()}
  
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
+        
  
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
@@ -26,5 +41,5 @@ export class MapContainer extends Component {
 }
  
 export default GoogleApiWrapper({
-  apiKey: ('')
+  apiKey: ('AIzaSyDlpQjXpE3I84Q-XF-Rm7dIZMcqvz6dsSs')
 })(MapContainer)
