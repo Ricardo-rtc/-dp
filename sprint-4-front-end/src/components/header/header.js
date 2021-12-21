@@ -39,7 +39,15 @@ export default class Header extends Component {
                     break;
             }
         } else {
-            alert("Usuario nao está logado.")
+            alert("Usuário não está logado.")
+        }}
+
+    cadastrar = () => {
+        if (parseJwt() != null) {
+            window.location.href = "/cadastrar"
+            }
+         else {
+            alert("Usuário não está logado.")
         }}
 
         logout = () => {
@@ -57,7 +65,8 @@ export default class Header extends Component {
                     <nav id="nav">
                         <ul id="menu">
                             <Link to="/">Home</Link>
-                            <Link to="/cadastrar">Cadastrar</Link>
+                            {/* <Link to="/cadastrar">Cadastrar</Link> */}
+                            <button onClick={() => this.cadastrar()}>Cadastrar</button>
                             <button onClick={() => this.listar()}>Listar</button>
                             <Link to="/login" onClick={() => this.logout()}>Sair</Link>
 
